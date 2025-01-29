@@ -5,12 +5,12 @@ import Home from './pages/Home';
 import Loginpage from './pages/Loginpage';
 
 function App() {
-  const location = useLocation(); // برای دسترسی به مسیر فعلی
-  const hideHeaderPaths = ['/Login']; // مسیرهایی که هدر نباید نمایش داده شود
+  const location = useLocation(); 
+  const hideHeaderPaths = ['/Login']; 
 
   return (
     <div className="App">
-      {/* نمایش هدر فقط اگر مسیر فعلی در لیست hideHeaderPaths نباشد */}
+      
       {!hideHeaderPaths.includes(location.pathname) && <Header />}
       <Routes>
         <Route path='/' element={<Home />} />

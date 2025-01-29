@@ -6,7 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
-  const {mode,changeMode} = useTheme(); //با استقاده از context و reducer
+  const {mode,changeMode} = useTheme(); 
   const navigate = useNavigate()
   const handleclick=()=>{
     navigate("/Login")
