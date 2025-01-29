@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Nohemi';
+    src: url('../fonts/Nohemi-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'IRANSansXThin';
+    src: url('../fonts/iransansx/IRANSansXThin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'IRANSansXRegular';
+    src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'IRANSansXDemiBold';
+    src: url('../fonts/iransansx/IRANSansXDemiBold.ttf') format('truetype');
+}
+
+
+
+ form.containerstyle{
+    border: 1px solid #e0e0e2;
+    border-radius: 10px;
+   width: 100%;
+   max-width: 400px;
+   height: 500px;
+   direction: rtl;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+ 
+ }
+ div.formlogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   text-align: center;
+   color: rgba(44, 128, 255, 1);
+  width: 100%;
+   height: 48px;
+  font-weight: 600;
+  font-size: 40px; 
+  font-family: 'Nohemi';
+ }
+
+ div.formname {
+    font-family: 'IRANSansXDemiBold';
+    font-size: 20px;
+ }
+
+ .formbodystyle .form-label{
+    font-size: 15px;
+    font-family: 'IRANSansXRegular';
+ }
+ input.form-control.mt-3 {
+    border-color: rgba(44, 128, 255, 1);
+ }
+
+ .form-text {
+    font-family: 'IRANSansXRegular';
+    color: rgba(44, 128, 255, 1);
+    width: 200px;
+ }
+ .btn.btn-primary.mb-3{
+    font-family: 'IRANSansXRegular';
+ }

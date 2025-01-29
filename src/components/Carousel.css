@@ -1,0 +1,52 @@
+.Slider{
+    width: 100%;
+    max-width: 1440px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+}
+.carousel-indicators [data-bs-target] {
+    width: 6px;
+    height: 6px;
+    border: none;
+    border-radius: 32px;
+    background-color: rgba(32, 32, 32, 0.24);
+  } 
+  .carousel-indicators .active {
+    background-color: rgba(255, 255, 255, 1);
+    width: 20px;
+    height: 8px;
+  } 
+  .carousel-control-prev , .carousel-control-next{
+    color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 32px;
+    position: relative;
+    display: inline-block;
+   background-color: rgba(255, 255, 255, 1);
+  }
+  .carousel-control-prev.dark , .carousel-control-next.dark {
+    background-color: rgba(32, 32, 32, 1);
+    color: white;
+  }
+  .carousel-control-prev:hover ,.carousel-control-next:hover{
+    color: black;
+  }
+  .carousel-control-prev.dark:hover ,.carousel-control-next.dark:hover{
+    color: white;
+  }
+
+  .carousel-inner {
+    width: 100%;
+    max-width: 1440px;
+  }
+  .custom-controls {
+    display: flex;
+    gap: 12px;
+    position: absolute;
+    left: 2.78%; 
+    top: 81.33%;
+}
+

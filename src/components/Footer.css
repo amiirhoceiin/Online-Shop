@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'Nohemi';
+    src: url('../fonts/Nohemi-SemiBold.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'IRANSansXRegular';
+    src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
+}
+
+.footerStyle{
+    width: 100%;
+    max-width: 1440px;
+    height: 537px;
+    background-color: rgba(32, 32, 32, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 40px;
+    padding: 60px 40px;
+   
+}
+.footerStyle.dark {
+    background-color: rgba(22, 22, 22, 1)
+}
+
+.footerStyle .footerbrand{
+    display: flex;
+    align-items: center;
+    font-family: 'Nohemi';
+    color: rgba(44, 128, 255, 1);
+    width: 115px;
+    height: 23px;
+    line-height: 48px;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.footerStyle .footerbodystyle{
+    display: flex;
+    table-layout: auto !important;
+   width: 1360px;
+    height: 354px;
+   gap: 60px;
+   
+}
+
+.footerbodystyle .footertablestyle{
+    width: 900px;
+    height: 354px;
+}
+
+.footerbodystyle .footertextbodystyle{
+    width: 400px;
+    height: 354px;
+}
+
+.table-borderless,
+.table-borderless tr,
+.table-borderless td,
+.table-borderless th {
+    background-color: transparent !important;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'IRANSansXRegular';
+    
+}
+.table-borderless th {
+    white-space: normal;
+    width: 180px;
+}
+
+.table-borderless tr {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+
+
+.table-borderless td{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footerbodystyle .footertextbodystyle{
+    width: 400px;
+    height: 354px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.footertextbodystyle .footertextstyle { 
+
+ display: flex;
+ align-items:right;
+ width: 400px;
+ height: 126px;
+ direction: rtl;
+ color: rgba(255, 255, 255, 0.52);
+ font-size: 14px;
+ font-family: 'IRANSansXMedium';
+}
+
+.footertextbodystyle .footerconnect{
+    width: 400px;
+    height: 49px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footerconnect .telephoneicon{
+ justify-content: end;
+ align-items: center;
+ display: flex;
+ width: 400px;
+ height: 21px;
+ gap: 8px;
+ color:rgba(255, 255, 255, 1);
+ font-family: 'IRANSansXRegular';
+ font-size: 14px;
+}
+.footerconnect .phonebody{
+    width: 400px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-family: 'IRANSansXRegular';
+    font-size: 12px;
+}

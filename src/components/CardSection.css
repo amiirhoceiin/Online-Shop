@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'IRANSansXMedium';
+    src: url('../fonts/iransansx/IRANSansXMedium.ttf') format('truetype');
+}
+
+.cardsection {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 40px;
+    width: 100%;
+    max-width: 1440px;
+    gap: 20px;
+    margin: 0 auto;
+}
+.cardsection.dark {
+    background-color: rgba(32, 32, 32, 1);
+}
+.headercardsection{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1360px;
+    height: 40px;
+    gap: 20px;
+    margin: 0 auto;
+    
+}
+.headercardsection .button {
+    font-family: 'IRANSansXMedium';
+    width: 87px;
+    height: 40px;
+    border: none;
+    border-radius: 32px;
+}
+.headercardsection .button.dark {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 1);
+}
+.headercardsection h4 {
+    font-family: 'IRANSansXMedium';
+    width: 177px;
+    height: 36px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    color: rgba(32, 32, 32, 1);
+    text-align: center;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+.headercardsection h4.dark {
+    color: rgba(255, 255, 255, 1);
+}
