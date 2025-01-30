@@ -8,34 +8,34 @@ export default function LoginForm() {
    const [errorMessage, setErrorMessage] = useState('');
 
      
-    const handelsubmit = async(e)=>{
+    const handelsubmit = (e)=>{
         e.preventDefault();
         console.log(username);
         const data = {username,password};
-        try {
-            const response = await fetch('http://your-backend-url/auth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            const result = await response.json();
-            
-            if (response.ok && result.token) {
-                
-                localStorage.setItem('token', result.token);
-                alert('ورود/ثبت نام موفقیت‌آمیز!');
-               
-            } else {
-                
-                setErrorMessage(result.message || 'خطایی در ورود پیش آمده');
-            }
-        }catch (error) {
-            
-            setErrorMessage('خطای شبکه، لطفاً دوباره تلاش کنید');
-            console.error('Error:', error);
+       fetch('http://your-backend-url/auth',{
+        method : 'POST',
+        headers : {
+            'Conetent-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+       })
+       .then((response)=>{
+        if(!response.ok){
+            throw new Error('dont fetch api')
         }
+        return response.json();
+       })
+       .then((result)=>{
+        if (result.token){
+            localStorage.setItem('token', result.token);
+            alert('ورود/ثبت نام موفقیت‌آمیز!');
+        }else {
+            setErrorMessage(result.message || 'خطایی در ورود پیش آمده');
+        }
+       }).catch((error) => {
+        setErrorMessage('خطای شبکه، لطفاً دوباره تلاش کنید');
+        console.error('Error:', error);
+    });
     }
 
   return (
