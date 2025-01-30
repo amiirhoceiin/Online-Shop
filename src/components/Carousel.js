@@ -39,7 +39,6 @@ export default function Carousel() {
        <i class="fa-solid fa-arrow-left"></i>
        <span class="visually-hidden">Previous</span>
       </button>
-
       <button className={`carousel-control-next ${mode}`} type="button" data-bs-target="#carouselExampleIndicators"    
        data-bs-slide="next">
        <i className="fa-solid fa-arrow-right"></i>

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
+    const navigate =  useNavigate();
    const [username,setUsername] = useState('');
    const [password,setPassword] = useState('');
+   const [isSignup,setIsSignup] =useState(false);
    const [showPasswordBtn, setShowPasswordBtn] = useState(false);
    const [errorMessage, setErrorMessage] = useState('');
 
@@ -15,9 +17,9 @@ export default function LoginForm() {
      
     const handelsubmit = (e)=>{
         e.preventDefault();
-        console.log(username);
+        const endpoint = isSignup ? "http://your-backend-url/signup" : "http://your-backend-url/login";
         const data = {username,password};
-       fetch('http://your-backend-url/auth',{
+       fetch(endpoint,{
         method : 'POST',
         headers : {
             'Conetent-Type': 'application/json',
@@ -33,7 +35,8 @@ export default function LoginForm() {
        .then((result)=>{
         if (result.token){
             localStorage.setItem('token', result.token);
-            alert('ورود/ثبت نام موفقیت‌آمیز!');
+            navigate('/home');
+            alert(isSignup?'ثبت نام موفقیت آمیز بود':'ورود موفقیت آمیز بود');
         }else {
             setErrorMessage(result.message || 'خطایی در ورود پیش آمده');
         }
@@ -49,7 +52,7 @@ export default function LoginForm() {
         <div className='formlogo mb-5'>
           Boook
         </div>
-        <div className='formname mb-3'>ورود/ثبت نام</div>
+        <div className='formname mb-3'>{isSignup?'ثبت نام ' : 'ورود'}</div>
         <div className=" formbodystyle">
           <label  className="form-label mt-1">سلام!<br></br>لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
           <input className='form-control mt-3' value={username} type="text" name="phone" required placeholder='نام کاربری' onChange={(e)=>setUsername(e.target.value)}/>
@@ -66,8 +69,9 @@ export default function LoginForm() {
           
         </div>
 
-        <button type="submit" className="btn btn-primary mb-4">ورود</button>
+        <button type="submit" className="btn btn-primary mb-4">{isSignup?'ثبت نام':'ورود'}</button>
           <div  style={{fontSize:'12px',textAlign:'center'}}>ورود شما به معنای پذیرش <NavLink style={{textDecoration:'none'}} to={"/"}>قوانین خصوصی</NavLink> است</div>
+          <button className='btn btn-light btn-sm' style={{width:'80px'}} onClick={()=>setIsSignup(!isSignup)}>{isSignup?'ورود':'ثبت نام'}</button>
         </form>
     </div>
   )

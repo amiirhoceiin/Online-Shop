@@ -15,7 +15,7 @@
   } 
   .carousel-indicators .active {
     background-color: rgba(255, 255, 255, 1);
-    width: 20px;
+    width: 20px; 
     height: 8px;
   } 
   .carousel-control-prev , .carousel-control-next{
