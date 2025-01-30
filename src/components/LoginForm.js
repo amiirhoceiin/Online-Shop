@@ -9,15 +9,15 @@ export default function LoginForm() {
         <div className='formlogo mb-5'>
           Boook
         </div>
-        <div className='formname mb-5'>ورود/ثبت نام</div>
-        <div className="mb-5 formbodystyle">
-          <label htmlFor="exampleInputPassword1" className="form-label">سلام!<br></br>لطفا شماره موبایل خود را وارد کنید</label>
-          <input className='form-control mt-3 mb-1' type="tel" name="phone" required/>
-          <div id="emailHelp" class="form-text">
-          لطفا این قسمت را خالی نگذارید</div>
+        <div className='formname mb-3'>ورود/ثبت نام</div>
+        <div className=" formbodystyle">
+          <label htmlFor="exampleInputPassword1" className="form-label mt-1">سلام!<br></br>لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
+          <input className='form-control mt-3' type="tel" name="phone" required placeholder='نام کاربری'/>
+          <input className='form-control mt-3 mb-4' type="tel" name="phone" required placeholder='رمز عبور'/>
+          
         </div>
 
-        <button type="submit" className="btn btn-primary mb-3">ورود</button>
+        <button type="submit" className="btn btn-primary mb-4">ورود</button>
           <div  style={{fontSize:'12px',textAlign:'center'}}>ورود شما به معنای پذیرش <NavLink style={{textDecoration:'none'}} to={"/"}>قوانین خصوصی</NavLink> است</div>
         </form>
     </div>

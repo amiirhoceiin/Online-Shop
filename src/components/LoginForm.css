@@ -55,8 +55,11 @@
     font-size: 15px;
     font-family: 'IRANSansXRegular';
  }
- input.form-control.mt-3 {
+ input.form-control {
     border-color: rgba(44, 128, 255, 1);
+ }
+ input.form-control::placeholder {
+    text-align: right;
  }
 
  .form-text {
