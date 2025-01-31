@@ -64,14 +64,16 @@ export default function LoginForm() {
             title="رمز عبور باید شامل حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد"
           onChange={handelPass}/>
           
-          <input className='mb-5' type="checkbox" onClick={()=>setShowPasswordBtn(!showPasswordBtn)}/>
+          <input className='mb-3' type="checkbox" onClick={()=>setShowPasswordBtn(!showPasswordBtn)}/>
           <label style={{fontSize:'small'}}>&nbsp;نمایش</label>
           
         </div>
-
+          <div className='d-flex justify-content-center align-items-center kjnrf3nh  mb-2' style={{fontSize:'12px'}}>
+          {isSignup&&<p className='r3jr'>اگر قبلا ثبت نام کردید ؟ </p>}
+          <button className='btn  hbjh ' style={{width:'80px',fontSize:'12px'}} onClick={()=>setIsSignup(!isSignup)}>{isSignup?'ورود':'ثبت نام'}</button>
+           </div>
         <button type="submit" className="btn btn-primary mb-4">{isSignup?'ثبت نام':'ورود'}</button>
           <div  style={{fontSize:'12px',textAlign:'center'}}>ورود شما به معنای پذیرش <NavLink style={{textDecoration:'none'}} to={"/"}>قوانین خصوصی</NavLink> است</div>
-          <button className='btn btn-light btn-sm' style={{width:'80px'}} onClick={()=>setIsSignup(!isSignup)}>{isSignup?'ورود':'ثبت نام'}</button>
         </form>
     </div>
   )
