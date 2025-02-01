@@ -104,7 +104,7 @@ export default function Footer() {
           <div className='footerconnect'>
             <div className='telephoneicon'>
               <span>تلفن پشتیبانی</span>
-              <i class="fa-solid fa-headset"></i>
+              <i className="fa-solid fa-headset"></i>
             </div>
             <div className='phonebody'>
                <div className='phone'>

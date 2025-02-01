@@ -34,7 +34,7 @@ export default function Card() {
                             {b.off}
                          </button> : null}
                         <button className={`buttonbuystyle btn ${mode}`}>
-                         <i class="fa-solid fa-cart-shopping"></i>
+                         <i className="fa-solid fa-cart-shopping"></i>
                         </button>
                     </div>
                     <img src={b.image} className="card-img-top" alt="..." style={{filter:'brightness(80%)'}}/>
