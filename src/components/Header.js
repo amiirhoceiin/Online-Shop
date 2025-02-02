@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const {mode,changeMode} = useTheme(); 
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    !!localStorage.getItem("token") // چک کردن وجود توکن
+  );
   const navigate = useNavigate()
   const handleclick=()=>{
     navigate("/Login")
@@ -20,10 +23,10 @@ export default function Header() {
 
           <button className={`circuleButton2 btn ${mode}`}><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
 
-    <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
+{ !isAuthenticated?   <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
       ورود / ثبت نام
       <i className="fa-solid fa-user"></i>
-    </button>
+    </button>:<p></p>}
 
 
           <input className={` headerSearchStyle ${mode}`} type='search' placeholder='جستجو در بوووک' aria-label='Search' style={{backgroundImage:`url(${searchIcon})`,backgroundRepeat:'no-repeat',   backgroundPosition: 'right 15px center', paddingRight:'45px'}}/>
