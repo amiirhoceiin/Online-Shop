@@ -4,7 +4,7 @@ import './Footer.css'
 
 export default function Footer() {
   const {mode} = useTheme();
-  return (
+  return ( 
     <div className={`container-fluid footerStyle ${mode}`}>
        <div className='footerbrand'>BOOOK</div>
        <div className='footerbodystyle'>
@@ -12,10 +12,10 @@ export default function Footer() {
           <table className='table table-borderless'>
             <thead>
                 <tr>
-                 <th scope="col" style={{width:'180px'}}>ادبیات ملل</th>
-                 <th scope="col" style={{width:'180px'}}>جوایز ادبی</th>
-                 <th scope="col" style={{width:'180px'}}>کتاب‌های برگزیده</th>
-                 <th scope="col" style={{width:'180px'}}>دسته بندی موضوعات</th>
+                 <th scope="col" style={{width:'25%'}}>ادبیات ملل</th>
+                 <th scope="col" style={{width:'25%'}}>جوایز ادبی</th>
+                 <th scope="col" style={{width:'25%'}}>کتاب‌های برگزیده</th>
+                 <th scope="col" style={{width:'25%'}}>دسته بندی موضوعات</th>
                 </tr>
             </thead>
              <tbody>

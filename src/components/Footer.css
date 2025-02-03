@@ -45,8 +45,10 @@
 }
 
 .footerbodystyle .footertablestyle{
-    width: 900px;
+    width: 100%;
+    max-width: 900px;
     height: 354px;
+    overflow-x: auto;
 }
 
 .footerbodystyle .footertextbodystyle{
