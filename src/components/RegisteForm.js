@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import './LoginForm.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-export default function LoginForm(props) {
+export default function RegisteForm(props) {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +15,7 @@ export default function LoginForm(props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const endpoint = "";
+        const endpoint = ""
         const data = { username, password };
 
         try {
@@ -34,10 +33,9 @@ export default function LoginForm(props) {
 
             const result = await response.json();
 
-            if (result.access) {
-               localStorage.setItem('token', result.access);
-                navigate('/');
-                alert('ورود موفقیت آمیز بود');
+            if (result) {
+                props.setIsLogin(!props.isLogin);
+                alert('ثبت نام موفقیت آمیز بود');
             } else {
                 setErrorMessage(result.message || 'خطایی در ورود پیش آمده');
             }
@@ -53,7 +51,7 @@ export default function LoginForm(props) {
                 <div className='formlogo mb-5'>
                     Boook
                 </div>
-                <div className='formname mb-3'>ورود</div>
+                <div className='formname mb-3'>ثبت نام</div>
                 <div className="formbodystyle">
                     <label className="form-label mt-1">سلام!<br />لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
                     <input className='form-control mt-3' value={username} type="text" name="phone" required placeholder='نام کاربری' onChange={(e) => setUsername(e.target.value)} />
