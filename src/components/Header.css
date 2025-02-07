@@ -13,8 +13,6 @@
     src: url('../fonts/iransansx/IRANSansXDemiBold.ttf') format('truetype');
 }
 
-
-
 .navbarStyle {
     
 width: 100%;
@@ -111,8 +109,7 @@ color: rgba(255, 255, 255, 1);
  gap: 40px;
  padding: 0;
  margin: 0 auto;
-display: flex;
-
+ display: flex;
 }
 .navbar2Style.dark{
  background-color: rgba(32, 32, 32, 1);
@@ -164,25 +161,17 @@ span .icon {
  height: 20px;
 
 }
-.hrdiv{
-    border: none;
-    margin: 0;
-}
-.hrdiv.dark {
-    background-color: rgba(32, 32, 32, 1);
-}
+
 .responsive-hr {
-    display: flex;
-    width: 100%; 
+    width: 100%;
     max-width: 1360px; 
     margin: 0 auto;
-   height: 1px;
-   background-color: rgba(32, 32, 32, 0.3);
-   border: 0;
+   border-top: 1px solid gray;
 }
 .responsive-hr.dark {
-    background-color: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
+
 
 
 @media  (max-width: 360px) {

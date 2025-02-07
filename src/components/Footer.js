@@ -5,7 +5,7 @@ import './Footer.css'
 export default function Footer() {
   const {mode} = useTheme();
   return ( 
-    <div className={`container-fluid footerStyle ${mode}`}>
+    <div className={` footerStyle ${mode}`}>
        <div className='footerbrand'>BOOOK</div>
        <div className='footerbodystyle'>
         <div className='footertablestyle'>

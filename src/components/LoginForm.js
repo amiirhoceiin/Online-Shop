@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginForm.css';
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginForm(props) {
     const navigate = useNavigate();
@@ -13,38 +14,34 @@ export default function LoginForm(props) {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-
-    const handleSubmit = async (e) => {
+    useEffect(() => {
+      if (errorMessage) {
+          const timer = setTimeout(() => setErrorMessage(''), 3000);
+          return () => clearTimeout(timer);
+      }
+  }, [errorMessage]);
+  
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const endpoint = "";
+        const endpoint = "https://f215-2a12-5940-f25a-00-2.ngrok-free.app/signin/";
         const data = { username, password };
-
-        try {
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const result = await response.json();
-
-            if (result.access) {
-               localStorage.setItem('token', result.access);
-                navigate('/');
-                alert('ورود موفقیت آمیز بود');
-            } else {
-                setErrorMessage(result.message || 'خطایی در ورود پیش آمده');
-            }
-        } catch (error) {
+        axios.post(endpoint,data,{
+        headers:{'Content-Type': 'application/json'}
+       })
+        .then(res =>{
+          if(res.status === 200){
+           localStorage.setItem('token',res.data.access);
+            navigate('/');
+            alert('ورود موفقیت‌آمیز بود');
+          }
+        }).catch(error=>{
+          if(error.response){
+            setErrorMessage('خطایی در ورود پیش آمده');
+          }else{
             setErrorMessage('خطای شبکه، لطفاً دوباره تلاش کنید');
-            console.error('Error:', error);
-        }
+          }
+          console.error('Error:', error);
+        })
     };
 
     return (
@@ -71,7 +68,7 @@ export default function LoginForm(props) {
                 </div>
                 <button type="submit" className="btn btn-primary mb-4">تایید</button>
                 <div style={{ fontSize: '12px', textAlign: 'center' }}>ورود شما به معنای پذیرش <NavLink style={{ textDecoration: 'none' }} to={"/"}>قوانین خصوصی</NavLink> است</div>
-                {errorMessage && <div className="alert alert-danger mt-3">{errorMessage}</div>}
+                {errorMessage && <div className="alert alert-danger m1">{errorMessage}</div>}
                 <button className='btn  btn-sm' onClick={()=>props.setIsLogin(!props.isLogin)}>{props.isLogin?'ثبت نام ':'ورود'}</button>
             </form>
         </div>

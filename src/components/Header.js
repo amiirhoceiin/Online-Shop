@@ -16,14 +16,14 @@ export default function Header() {
   }
   
   return (
-    <div> 
+    <div style={{width:'100%',maxWidth:'1440px',margin:'0 auto'}}> 
       <nav className={`navbar navbarStyle d-flex  ${mode}`}>
        <form className='container-fluid formStyle' onSubmit={(e)=>e.preventDefault()}>
        <button className={`circuleButton1 btn ${mode}`} onClick={()=>changeMode(mode === 'dark' ? 'light' : 'dark') } ><i className="fa-regular fa-moon"></i></button>
 
           <button className={`circuleButton2 btn ${mode}`}><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
 
-{ !isAuthenticated?   <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
+       { !isAuthenticated?   <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
       ورود / ثبت نام
       <i className="fa-solid fa-user"></i>
     </button>:<p></p>}
@@ -33,11 +33,7 @@ export default function Header() {
           <div className='navbar-brand brandStyle'>BOOOK</div>
       </form>
      </nav>
-     <div className={`hrdiv ${mode}`}>
       <hr className={`responsive-hr ${mode}`}/>
-     </div>
-      
-   
       <nav className={`navbar navbar-expand-lg navbar2Style ${mode}`}>
       <div className="container-fluid ">
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
