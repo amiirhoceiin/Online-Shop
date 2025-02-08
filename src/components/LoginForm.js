@@ -8,37 +8,64 @@ export default function LoginForm(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    const [apiSuccessMessage, setApiSuccessMessage] = useState('');
+    const [apiErrorMessage, setApiErrorMessage] = useState('');
+    const [formEror,setFormError] =useState({username:"",password:""});
 
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    const validate = ()=>{
+      const usernamePattern = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/;
+      const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      let newErrors = {username:"",password:""};
+
+      if(!usernamePattern.test(username)){
+        newErrors.username = "نام کاربری باید دقیقا ۸ کاراکتر و شامل اعداد و حروف انگلیسی باشد.";
+      }
+      if(!passwordPattern.test(password)){
+        newErrors.password = "رمز عبور باید حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد.";
+      }
+
+      setFormError(newErrors);
+      return Object.values(newErrors).every((formEror) => formEror === ""); // بررسی اینکه همه فیلدها معتبر باشند
+    }
+
+
     useEffect(() => {
-      if (errorMessage) {
-          const timer = setTimeout(() => setErrorMessage(''), 3000);
+      if (apiErrorMessage) {
+          const timer = setTimeout(() => setApiErrorMessage(''), 3000);
           return () => clearTimeout(timer);
       }
-  }, [errorMessage]);
+  }, [apiErrorMessage]);
+
+  useEffect(() => {
+    if (apiSuccessMessage) {
+        const timer = setTimeout(() => setApiSuccessMessage(''), 3000);
+        return () => clearTimeout(timer);
+    }
+}, [apiSuccessMessage]);
+
   
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(!validate()){
+          return
+        }
         const endpoint = "https://f215-2a12-5940-f25a-00-2.ngrok-free.app/signin/";
         const data = { username, password };
         axios.post(endpoint,data,{
         headers:{'Content-Type': 'application/json'}
        })
-        .then(res =>{
+        .then(res =>{ 
           if(res.status === 200){
            localStorage.setItem('token',res.data.access);
             navigate('/');
-            alert('ورود موفقیت‌آمیز بود');
+            setApiSuccessMessage('ورود موفقیت‌آمیز بود');
           }
         }).catch(error=>{
           if(error.response){
-            setErrorMessage('خطایی در ورود پیش آمده');
+            setApiErrorMessage('خطایی در ورود پیش آمده');
           }else{
-            setErrorMessage('خطای شبکه، لطفاً دوباره تلاش کنید');
+            setApiErrorMessage('خطای شبکه، لطفاً دوباره تلاش کنید');
           }
           console.error('Error:', error);
         })
@@ -52,15 +79,23 @@ export default function LoginForm(props) {
                 </div>
                 <div className='formname mb-3'>ورود</div>
                 <div className="formbodystyle">
-                    <label className="form-label mt-1">سلام!<br />لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
-                    <input className='form-control mt-3' value={username} type="text" name="phone" required placeholder='نام کاربری' onChange={(e) => setUsername(e.target.value)} />
 
-                    <input className='form-control mt-3 mb-1' value={password} type={showPassword ? "text" : "password"} name="phone" required placeholder='رمز عبور' minLength={8} maxLength={20}
-                        onCopy={(e) => e.preventDefault()}
-                        onPaste={(e) => e.preventDefault()}
-                        pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$"
-                        title="رمز عبور باید شامل حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد"
-                        onChange={handlePasswordChange} />
+
+                    <label className="form-label mt-1">سلام!<br />لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
+
+
+
+                    <input className='form-control mt-3' value={username} type="text" name="phone"  placeholder='نام کاربری' onChange={(e) => setUsername(e.target.value)} />
+                    {formEror.username&&<p style={{ color: "red" }}>{formEror.username}</p>}
+
+
+
+                    <input className='form-control mt-3 mb-1' value={password} type={showPassword ? "text" : "password"} name="phone"  placeholder='رمز عبور'
+                        onChange={(e)=>setPassword(e.target.value)} />
+                    {formEror.password && <p style={{ color: "red" }}>{formEror.password}</p>}
+
+
+
 
                     <input className='mb-3' type="checkbox" onClick={() => setShowPassword(!showPassword)} />
                     <label style={{ fontSize: 'small' }}>&nbsp;نمایش</label>
@@ -68,8 +103,25 @@ export default function LoginForm(props) {
                 </div>
                 <button type="submit" className="btn btn-primary mb-4">تایید</button>
                 <div style={{ fontSize: '12px', textAlign: 'center' }}>ورود شما به معنای پذیرش <NavLink style={{ textDecoration: 'none' }} to={"/"}>قوانین خصوصی</NavLink> است</div>
-                {errorMessage && <div className="alert alert-danger m1">{errorMessage}</div>}
+              
                 <button className='btn  btn-sm' onClick={()=>props.setIsLogin(!props.isLogin)}>{props.isLogin?'ثبت نام ':'ورود'}</button>
+                {apiErrorMessage && 
+                    <div className="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                      <use href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>{apiErrorMessage}</div>
+                  </div>
+                }
+               
+                {apiSuccessMessage && <div className="alert alert-success d-flex align-items-center" role="alert">
+                   <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img"      aria-label="Success:"><use href="#check-circle-fill"/></svg>
+                    <div>
+                     {apiSuccessMessage}
+                   </div>
+                 </div>}
+
+
             </form>
         </div>
     );
