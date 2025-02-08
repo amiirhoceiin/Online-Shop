@@ -12,7 +12,7 @@ export function ThemeProvider({children}){
             default : {
             return state
             }    
-        }
+        } 
     }
     
     const [state,distpatch] = useReducer(themeReducer,{
