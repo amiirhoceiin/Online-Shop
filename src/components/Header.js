@@ -16,7 +16,7 @@ export default function Header() {
   }
   
   return (
-    <div style={{width:'100%',maxWidth:'1440px',margin:'0 auto'}}> 
+    <div className={`headerstyle ${mode}`}> 
       <nav className={`navbar navbarStyle d-flex  ${mode}`}>
        <form className='container-fluid formStyle' onSubmit={(e)=>e.preventDefault()}>
        <button className={`circuleButton1 btn ${mode}`} onClick={()=>changeMode(mode === 'dark' ? 'light' : 'dark') } ><i className="fa-regular fa-moon"></i></button>
