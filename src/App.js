@@ -6,7 +6,7 @@ import Loginpage from './pages/Loginpage';
 
 function App() {
   const location = useLocation(); 
-  const hideHeaderPaths = ['/Login']; 
+  const hideHeaderPaths = ['/Login','/*']; 
 
   return (
     <div className="App">
@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/Login' element={<Loginpage />} />
+        <Route path='/*' element={<div className='d-flex justify-content-center'><h1>404 Not Found</h1></div>}/>
       </Routes>
     </div>
   );
