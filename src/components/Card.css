@@ -101,6 +101,7 @@
     width:168.51px;
     height:264px;
     border-radius: 0;
+    filter:brightness(80%);
  }
 
  .custom-col .card-body{

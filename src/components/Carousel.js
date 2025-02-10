@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './Carousel.css'
-import Slide from '../img/slide/db4d9578201897b7c050248c6a4bfbd2.png'
 import { useTheme } from '../hooks/useTheme';
 import useFetch from '../hooks/useFetch';
 
@@ -40,7 +39,7 @@ export default function Carousel() {
   {sliderBooks.map((sliderBook,index)=>(
       <div key={sliderBook.id} 
       className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-        <img src={sliderBook.imageSlider} className="d-block w-100" alt="..."/>
+        <img src={sliderBook.imageSlider} title={sliderBook.title} className="d-block w-100" alt="..."/>
       </div>
      ))}
   </div>

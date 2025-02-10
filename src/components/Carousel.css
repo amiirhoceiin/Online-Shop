@@ -27,7 +27,28 @@
     position: relative;
     display: inline-block;
    background-color: rgba(255, 255, 255, 1);
+   border: none; 
+   outline: none; 
+   transition: all 0.3s ease; 
   }
+  .carousel-control-prev:active,
+  .carousel-control-next:active,
+  .carousel-control-prev:focus,
+  .carousel-control-next:focus {
+    background-color: inherit !important; 
+    color: black !important; 
+    box-shadow: none !important; 
+    transform: none !important; 
+  }
+  
+  .carousel-control-prev.dark:active,
+  .carousel-control-next.dark:active,
+  .carousel-control-prev.dark:focus,
+  .carousel-control-next.dark:focus {
+    background-color: rgba(32, 32, 32, 1) !important; 
+    color: white !important; 
+  }
+ 
   .carousel-control-prev.dark , .carousel-control-next.dark {
     background-color: rgba(32, 32, 32, 1);
     color: white;
@@ -42,6 +63,9 @@
   .carousel-inner {
     width: 100%;
     max-width: 1440px;
+  }
+  .carousel-item:hover{
+    filter:brightness(80%);
   }
   .custom-controls {
     display: flex;
