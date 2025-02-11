@@ -1,31 +1,39 @@
 import React, { useState,useEffect } from 'react'
-import useFetch from '../hooks/useFetch';
+
 import { useTheme } from '../hooks/useTheme';
 import './Card.css'
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+
+const useFetch=()=>{
+  return axios.get('http://localhost:3000/books')
+  .then(res=>res.data)
+}
 
 
 export default function Card() {
    const {mode} = useTheme();
-    const {data : card,isLoading,error} = useFetch('http://localhost:3000/books');
-    const [book,setBook] = useState([]);
-    useEffect(() => {
-        if (card) {
-          setBook(card.slice(0, 5));
-        }
-      }, [card]); 
-    
-      if (isLoading) {
-        return <div>Loading...</div>;
-      }
-    
-      if (error) {
-        return <div>Error: {error.message}</div>;
-      }
+
+   const {data:bookSuggestion,isLoading,isError,error} = useQuery({
+    queryKey : ['bookSuggestion'],
+    queryFn : useFetch
+   })
+   if(isLoading){
+    return <div>در حال بارگذاری...</div>;
+   }
+
+   if(isError){
+    return <div>{error.message}</div>
+   }
+ 
+   const limitedData = bookSuggestion?.slice(0,5);
+  
+ 
     
  return(
     <div className='container-fluid containerstyle' >
        <div className='rowstyle row'>
-        {book.map((b)=>(
+        {limitedData?.map((b)=>(
                <div key={b.id} className='card custom-col'>
                   <div className={`cardtopstyle ${mode}`}>
                     <div className='divtopstyle  '>

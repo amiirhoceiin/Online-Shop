@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function useFetch(url) {
@@ -6,21 +7,15 @@ function useFetch(url) {
   const [error, setError] = useState(null); 
 
   useEffect(() => {
-    fetch(url)
-    .then((res)=>{
-      if(!res.ok){
-        throw new Error('Network response was not ok');
-      }
-     return res.json();
+    axios.get(url)
+    .then((response) => {
+      setData(response.data);
+      setIsLoading(false);
     })
-    .then((data)=>{
-     setData(data)
-     setIsLoading(false)
-    })
-    .catch((error)=>{
-    setError(error)
-    setIsLoading(false)
-    })
+    .catch((error) => {
+      setError(error);
+      setIsLoading(false);
+    });
   }, [url]);
 
   return { data, isLoading, error };

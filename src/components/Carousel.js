@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './Carousel.css'
 import { useTheme } from '../hooks/useTheme';
-import useFetch from '../hooks/useFetch';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+
+const useFetch = ()=>{
+ return axios.get('http://localhost:3000/books').then(res=>res.data);
+}
 
 export default function Carousel() {
   const {mode} = useTheme();
-  const {data:book,isLoading,error} = useFetch('http://localhost:3000/books');
-  const [sliderBooks,setSliderBooks] = useState([]);
+  const {data:sliderBooks,isLoading,isError,error} = useQuery({
+    queryKey : ['sliderBooks'],
+    queryFn : useFetch
+  });
+  if (isLoading) {
+    return <div>در حال بارگذاری...</div>;
+  }
 
-      useEffect(() => {
-          if (book) {
-            setSliderBooks(book.slice(0, 5));
-          }
-        }, [book]); 
+  if (isError) {
+    return <div>{error.message}</div>;
+  }
 
-        if (isLoading) {
-          return <div>Loading...</div>;
-        }
-      
-        if (error) {
-          return <div>Error: {error.message}</div>;
-        }
+  const limitedData = sliderBooks?.slice(0, 5); 
 
-
+  
   return (
     <div className='Slider'> 
         <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
@@ -36,10 +38,10 @@ export default function Carousel() {
 
   
   <div className="carousel-inner ">
-  {sliderBooks.map((sliderBook,index)=>(
-      <div key={sliderBook.id} 
+  {limitedData?.map((limited,index)=>(
+      <div key={limited.id} 
       className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-        <img src={sliderBook.imageSlider} title={sliderBook.title} className="d-block w-100" alt="..."/>
+        <img src={limited.imageSlider} title={limited.title} className="d-block w-100" alt="..."/>
       </div>
      ))}
   </div>

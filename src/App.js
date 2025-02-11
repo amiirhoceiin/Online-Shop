@@ -3,6 +3,10 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Loginpage from './pages/Loginpage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient();
 
 function App() {
   const location = useLocation(); 
@@ -24,7 +28,10 @@ function App() {
 export default function AppWrapper() {
   return (
     <BrowserRouter>
-      <App />
+     <QueryClientProvider client={queryClient}>
+       <App />
+      <ReactQueryDevtools/>
+     </QueryClientProvider>
     </BrowserRouter>
   );
 }
