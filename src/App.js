@@ -2,9 +2,11 @@ import './App.css';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
+import BooksCategory from './pages/BooksCategory'
 import Loginpage from './pages/Loginpage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/Login' element={<Loginpage />} />
         <Route path='/*' element={<div className='d-flex justify-content-center'><h1>404 Not Found</h1></div>}/>
+        <Route path='/books/:tag' element={<BooksCategory/>}/> 
       </Routes>
     </div>
   );

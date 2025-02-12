@@ -7,12 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const {mode,changeMode} = useTheme(); 
+  const [iscategoryOpen, setIsCateoryOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("token") // چک کردن وجود توکن
   );
   const navigate = useNavigate()
   const handleclick=()=>{
-    navigate("/Login")
+    navigate("/Login") 
   }
   
   return (
@@ -48,13 +49,43 @@ export default function Header() {
       <span>خانه</span>
     </Link>
   </li>
+    
+
 
   <li className="nav-item">
-    <Link className={`nav-link ${mode}`} to="/Login">
-      <i className="fa-solid fa-list"></i>
-      <span>دسته بندی موضوعی</span>
-    </Link>
-  </li>
+        <button
+          className={`nav-link ${iscategoryOpen ? "active" : ""}`}
+          onClick={() => setIsCateoryOpen(!iscategoryOpen)}
+          style={{ background: "none", border: "none", cursor: "pointer" }}
+        >
+          <i className="fa-solid fa-list"></i>
+          <span>دسته بندی موضوعی</span>
+        </button>
+        {iscategoryOpen && (
+          <ul className="list-group mt-2"
+          style={{
+            position: "absolute",
+            top: "100%", 
+            zIndex: "1050", // مقدار زیاد برای قرارگیری بالای کاروسل
+            backgroundColor: "#fff", 
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", 
+            borderRadius: "5px",
+            minWidth: "200px",
+            padding: "5px"
+          }}>
+            <li className="list-group-item" >
+              <Link style={{textDecoration:'none',color:'black'}} to="/books/story">داستانی</Link>
+            </li>
+            <li className="list-group-item">
+              <Link style={{textDecoration:'none',color:'black'}} to="/books/science">علمی</Link>
+            </li>
+            <li className="list-group-item">
+              <Link style={{textDecoration:'none',color:'black'}} to="/books/history">تاریخی</Link>
+            </li>
+          </ul>
+        )}
+      </li>
+
 
   <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/featured-books">
