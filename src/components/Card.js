@@ -16,7 +16,11 @@ export default function Card() {
 
    const {data:bookSuggestion,isLoading,isError,error} = useQuery({
     queryKey : ['bookSuggestion'],
-    queryFn : useFetch
+    queryFn : useFetch,
+    staleTime: 5 * 60 * 1000, 
+    cacheTime: 10 * 60 * 1000, 
+    refetchOnWindowFocus: true, 
+    refetchOnMount: false
    })
    if(isLoading){
     return <div>در حال بارگذاری...</div>;

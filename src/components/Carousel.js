@@ -4,7 +4,7 @@ import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
-const useFetch = ()=>{
+const fetchSlider = ()=>{
  return axios.get('http://localhost:3000/books').then(res=>res.data);
 }
 
@@ -12,7 +12,11 @@ export default function Carousel() {
   const {mode} = useTheme();
   const {data:sliderBooks,isLoading,isError,error} = useQuery({
     queryKey : ['sliderBooks'],
-    queryFn : useFetch
+    queryFn : fetchSlider,
+    staleTime: 5 * 60 * 1000, 
+    cacheTime: 10 * 60 * 1000, 
+    refetchOnWindowFocus: true, 
+    refetchOnMount: false
   });
   if (isLoading) {
     return <div>در حال بارگذاری...</div>;

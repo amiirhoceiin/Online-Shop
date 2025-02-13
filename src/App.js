@@ -22,7 +22,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/Login' element={<Loginpage />} />
         <Route path='/*' element={<div className='d-flex justify-content-center'><h1>404 Not Found</h1></div>}/>
-        <Route path='/books/:tag' element={<BooksCategory/>}/> 
+        <Route path='/books/:category' element={<BooksCategory/>}/> 
       </Routes>
     </div>
   );
