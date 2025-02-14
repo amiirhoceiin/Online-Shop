@@ -13,10 +13,11 @@ export default function LoginForm(props) {
     const [apiErrorMessage, setApiErrorMessage] = useState('');
 
     const schema = yup.object().shape({
-      username :  yup.string().matches(/^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/, "نام کاربری باید ۸ کاراکتر و شامل اعداد و حروف انگلیسی باشد.").required("نام کاربری الزامی است"),
-      password : yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
+      username :  yup.string().required("نام کاربری الزامی است").matches(/^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/, "نام کاربری باید ۸ کاراکتر و شامل اعداد و حروف انگلیسی باشد."),
+      
+      password : yup.string().required("رمز عبور الزامی است.").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
         "رمز عبور باید حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد.")
-        .required("رمز عبور الزامی است."),
+        
     })
     
     const {register,handleSubmit,formState:{errors}} = useForm({resolver:yupResolver(schema)});
@@ -37,7 +38,7 @@ export default function LoginForm(props) {
         const endpoint = "https://f215-2a12-5940-f25a-00-2.ngrok-free.app/signin/";
         const sanitizedData = {
           username : data.username,
-          password: data.password
+          password : data.password
         }
         
         axios.post(endpoint,sanitizedData,{
@@ -46,8 +47,10 @@ export default function LoginForm(props) {
         .then(res =>{ 
           if(res.status === 200){
            localStorage.setItem('token',res.data.access);
-            navigate('/');
-            setApiSuccessMessage('ورود موفقیت‌آمیز بود');
+           setApiSuccessMessage('ورود موفقیت‌آمیز بود');
+            setTimeout(() => {
+              navigate('/')
+            }, 1000);
           }
         }).catch(error=>{
           if(error.response){

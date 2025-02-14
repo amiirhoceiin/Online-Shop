@@ -11,9 +11,12 @@ export default function RegisteForm(props) {
     const [apiErrorMessage, setApiErrorMessage] = useState('');
     
     const schema = yup.object().shape({
-      username : yup.string().matches(/^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/, "نام کاربری باید ۸ کاراکتر و شامل اعداد و حروف انگلیسی باشد.").required("نام کاربری الزامی است"),
-      password : yup.string().matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
-        "رمز عبور باید حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد.").required("رمز عبور الزامی است."),
+      username : yup.string().required("نام کاربری الزامی است").matches(/^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/, "نام کاربری باید ۸ کاراکتر و شامل اعداد و حروف انگلیسی باشد."),
+
+      password : yup.string().required("رمز عبور الزامی است.").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
+        "رمز عبور باید حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد."),
+
+
       confirmpassword : yup.string().oneOf([yup.ref('password')], "رمزهای عبور یکسان نیستند.").required("تکرار رمز عبور الزامی است.")
     }) 
 
@@ -42,8 +45,11 @@ export default function RegisteForm(props) {
                 headers:{'Content-Type': 'application/json'}
             }).then(res=>{
                if(res.status === 200 || res.status === 201){
-                props.setIsLogin(!props.isLogin);
                 setApiSuccessMessage('ثبت نام موفقیت آمیز بود');
+                setTimeout(() => {
+                  props.setIsLogin(!props.isLogin);
+                }, 500);
+                
                } 
             }).catch(error=>{
                 if(error.response){

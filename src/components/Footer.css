@@ -52,20 +52,8 @@
     overflow-y: auto;
 }
 
-.footerbodystyle .footertextbodystyle{
-    width: 400px;
-    height: 354px;
-}
-@media (max-width : 430px) {
-    .footerbodystyle .footertextbodystyle{
-        width: 100%;
-        max-width: 350px;
-        height: 354px;
-    }
-    .footerbodystyle .footertablestyle{
-        display: none;
-    }
-}
+
+
 
 .table-borderless,
 .table-borderless tr,
@@ -121,6 +109,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+}
+@media (max-width : 430px) {
+    .footerbodystyle .footertextbodystyle{
+        width: 100%;
+        max-width: 350px;
+        height: 354px;
+        display: flex;
+        
+    }
+    .footertextbodystyle .footerconnect{
+        width: 100%;
+        max-width: 350px;
+    }
+    .footerconnect .telephoneicon{
+        width: 100%;
+        max-width: 330px;
+    }
+    .footerconnect .phonebody{
+        width: 100%;
+        max-width: 330px;
+    }
+    .footerbodystyle .footertablestyle{
+        display: none;
+    }
 }
 
 .footerconnect .telephoneicon{
@@ -133,7 +146,8 @@
  color:rgba(255, 255, 255, 1);
  font-family: 'IRANSansXRegular';
  font-size: 14px;
-}
+ 
+} 
 .footerconnect .phonebody{
     width: 400px;
     height: 20px;
@@ -143,4 +157,5 @@
     align-items: center;
     font-family: 'IRANSansXRegular';
     font-size: 12px;
+    
 }
