@@ -15,15 +15,15 @@ export default function Carousel() {
     queryFn : fetchSlider,
     staleTime: 5 * 60 * 1000, 
     cacheTime: 10 * 60 * 1000, 
-    refetchOnWindowFocus: true, 
+    refetchOnWindowFocus: true,  
     refetchOnMount: false
   });
   if (isLoading) {
-    return <div>در حال بارگذاری...</div>;
+    return <div className='d-flex justify-content-center m-4'>در حال بارگذاری...</div>;
   }
 
   if (isError) {
-    return <div>{error.message}</div>;
+    return <div className='d-flex justify-content-center m-4'>{error.message}</div>;
   }
 
   const limitedData = sliderBooks?.slice(0, 5); 
@@ -45,7 +45,7 @@ export default function Carousel() {
   {limitedData?.map((limited,index)=>(
       <div key={limited.id} 
       className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-        <img src={limited.imageSlider} title={limited.title} className="d-block w-100" alt="..."/>
+        <img src={limited.imageSlider} title={limited.title} className="d-block w-100 " alt="..."/>
       </div>
      ))}
   </div>

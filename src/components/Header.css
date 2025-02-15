@@ -160,7 +160,7 @@ color: rgba(255, 255, 255, 1);
     }
     .nav-item {
         padding: 8px;
-        width: 100%;
+        width: 100%; 
     }
 }
 .navbarUlStyle .nav-link.dark {
@@ -182,11 +182,3 @@ span .icon {
 .responsive-hr.dark {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
-
-
-
-@media  (max-width: 360px) {
-    .headerSearchStyle  {
-     width: 272px;
-    }
-  }

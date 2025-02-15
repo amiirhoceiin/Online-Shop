@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 import searchIcon from '../img/icon/icons8-search-24.svg';
 import { useTheme } from '../hooks/useTheme';
@@ -8,6 +8,16 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Header() {
   const {mode,changeMode} = useTheme(); 
   const [iscategoryOpen, setIsCateoryOpen] = useState(false);
+  const headerButton='ورود / ثبت نام';
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     !!localStorage.getItem("token") // چک کردن وجود توکن
   );
@@ -26,8 +36,8 @@ export default function Header() {
           <button className={`circuleButton2 btn ${mode}`}><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
 
        { !isAuthenticated?   <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
-      ورود / ثبت نام
-      <i className="fa-solid fa-user"></i>
+        {screenWidth > 430 ? headerButton : null}
+      <i className="fa-solid fa-user"></i> 
     </button>:<p></p>}
 
 
@@ -54,7 +64,7 @@ export default function Header() {
 
   <li className="nav-item">
         <button
-          className={`nav-link ${iscategoryOpen ? "active" : ""}`}
+          className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
           onClick={() => setIsCateoryOpen(!iscategoryOpen)}
           style={{ background: "none", border: "none", cursor: "pointer" }}
         >
