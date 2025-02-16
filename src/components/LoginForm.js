@@ -47,6 +47,9 @@ export default function LoginForm(props) {
         .then(res =>{ 
           if(res.status === 200){
            localStorage.setItem('token',res.data.access);
+           if (data.refreshToken) {
+            localStorage.setItem('refreshToken', data.refreshToken);
+          }
            setApiSuccessMessage('ورود موفقیت‌آمیز بود');
             setTimeout(() => {
               navigate('/')
