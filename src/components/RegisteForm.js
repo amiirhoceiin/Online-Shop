@@ -82,42 +82,42 @@ export default function RegisteForm(props) {
                    </div>
                  </div>}
             <form className="container containerstyle p-4" onSubmit={handleSubmit(onFormSubmit)}>
-                <div className='formlogo mb-2'>
+                <div className={`formlogo ${errors.username || errors.password ? 'mb-0' : 'mb-2' }`}>
                     Boook
                 </div>
-                <div className='formname mb-3'>ثبت نام</div>
+                <div className={`formname ${errors.username || errors.password ? 'mb-0' : 'mb-3' }`}>ثبت نام</div>
                 <div className="formbodystyle">
-                    <label className="form-label mt-1">سلام!<br />لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
+                    <label className={`form-labe ${errors.username || errors.password ? 'mb-1' : 'mb-2' }`}>سلام!<br />لطفا نام کاربری و رمز عبور خود را وارد کنید</label>
 
-                    <input className='form-control mt-3'  type="text" name="username" placeholder='نام کاربری' 
+                    <input className={`form-control ${errors.username || errors.password ? 'mt-1' : 'mt-3' }`}  type="text" name="username" placeholder='نام کاربری' 
                     {...register("username")} />
-                    {errors.username && <p style={{ color: "red" }}>{errors.username?.message}</p>}
+                    {errors.username && <p style={{ color: "red",fontSize:"small" }}>{errors.username?.message}</p>}
                     
 
 
 
-                    <input className='form-control mt-3 mb-1' type={showPassword ? "text" : "password"} name="password"  placeholder='رمز عبور'
+                    <input className={`form-control ${errors.username || errors.password ? 'mt-2 mb-1'  : 'mt-3 mb-1' } `} type={showPassword ? "text" : "password"} name="password"  placeholder='رمز عبور'
                        {...register("password")}  />
-                       {errors.password && <p style={{ color: "red" }}>{errors.password?.message}</p>}
+                       {errors.password && <p style={{ color: "red",fontSize:"small" }}>{errors.password?.message}</p>}
                          
 
 
 
-                    <input className='form-control mt-3 mb-1'  type={showPassword ? "text" : "password"} name="confirmpassword" placeholder='تکرار رمز عبور'
+                    <input className={`form-control ${errors.username || errors.password ? 'mt-1 mb-1'  : 'mt-3 mb-1' } `}type={showPassword ? "text" : "password"} name="confirmpassword" placeholder='تکرار رمز عبور'
                       {...register("confirmpassword")}/>
-                      {errors.confirmpassword && <p style={{ color: "red" }}>{errors.confirmpassword?.message}</p>}
+                      {errors.confirmpassword && <p style={{ color: "red",fontSize:"small" }}>{errors.confirmpassword?.message}</p>}
                     
 
 
 
-                    <input className='mb-3' type="checkbox" onClick={() => setShowPassword(!showPassword)} />
+                    <input className={`${errors.username || errors.password || errors.confirmpassword? 'mb-2' : 'mb-4'} `} type="checkbox" onClick={() => setShowPassword(!showPassword)} />
                     <label style={{ fontSize: 'small' }}>&nbsp;نمایش</label>
 
 
 
 
                 </div>
-                <button type="submit" className="btn btn-primary mb-4">تایید</button>
+                <button type="submit" className={`btn btn-primary ${errors.username || errors.password ? 'mb-1' : 'mb-3'}`}>تایید</button>
                 <div style={{ fontSize: '12px', textAlign: 'center' }}>ورود شما به معنای پذیرش <NavLink style={{ textDecoration: 'none' }} to={"/"}>قوانین خصوصی</NavLink> است</div>
                 
                 <button className='btn  btn-sm' onClick={()=>props.setIsLogin(!props.isLogin)}>{props.isLogin?'ثبت نام ':'ورود'}</button>

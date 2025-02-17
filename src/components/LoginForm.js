@@ -13,10 +13,9 @@ export default function LoginForm(props) {
     const [apiErrorMessage, setApiErrorMessage] = useState('');
 
     const schema = yup.object().shape({
-      username :  yup.string().required("نام کاربری الزامی است").matches(/^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/, "نام کاربری باید ۸ کاراکتر و شامل اعداد و حروف انگلیسی باشد."),
+      username :  yup.string().required("نام کاربری الزامی است"),
       
-      password : yup.string().required("رمز عبور الزامی است.").matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
-        "رمز عبور باید حداقل ۸ کاراکتر، یک حرف بزرگ، یک حرف کوچک، یک عدد و یک کاراکتر خاص باشد.")
+      password : yup.string().required("رمز عبور الزامی است.")
         
     })
     
@@ -83,7 +82,7 @@ export default function LoginForm(props) {
                    </div>
                  </div>}
             <form className="container containerstyle p-4" onSubmit={handleSubmit(onFormSubmit)}>
-                <div className='formlogo mb-5'>
+                <div className={`formlogo ${errors.username || errors.password ? '' : 'mb-4'}`}>
                     Boook
                 </div>
                 <div className='formname mb-3'>ورود</div>
@@ -93,14 +92,14 @@ export default function LoginForm(props) {
 
 
 
-                    <input className='form-control mt-3'  type="text" name="username"  placeholder='نام کاربری' {...register("username")} />
-                    {errors.username && <p style={{color:'red'}}>{errors.username?.message}</p>}
+                    <input className={`form-control ${errors.username ? 'mt-1' : 'mt-3'}`}  type="text" name="username"  placeholder='نام کاربری' {...register("username")} />
+                    {errors.username && <p className='m-1' style={{color:'red'}}>{errors.username?.message}</p>}
                     
 
 
 
                     <input className='form-control mt-3 mb-1'  type={showPassword ? "text" : "password"} name="password"  placeholder='رمز عبور' {...register("password")} />
-                    {errors.password && <p style={{color:'red'}}>{errors.password?.message}</p>}
+                    {errors.password && <p className='m-1' style={{color:'red'}}>{errors.password?.message}</p>}
                     
 
 
