@@ -34,7 +34,7 @@ export default function LoginForm(props) {
   
     const onFormSubmit = (data) => {
         
-        const endpoint = "https://f215-2a12-5940-f25a-00-2.ngrok-free.app/signin/";
+        const endpoint = "http://127.0.0.1:8000/signin/";
         const sanitizedData = {
           username : data.username,
           password : data.password

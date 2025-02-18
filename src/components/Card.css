@@ -4,15 +4,13 @@
 }
 @font-face {
  font-family: 'iranyekan';
- src: url('../fonts/iranyekanwebregular.ttf') format('truetype');
+ src: url('../fonts/iranYekan/iranyekanwebregularfanum.woff') format('truetype');
 }
 @font-face{
     font-family: 'IRANSansXRegular';
     src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
 }
-/* *{
-   outline: 0.5px solid red;
-} */
+
 
 
 .container-fluid.containerstyle{

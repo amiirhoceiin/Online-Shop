@@ -36,7 +36,7 @@ export default function RegisteForm(props) {
     }, [apiSuccessMessage]);
 
     const onFormSubmit = (data) => {
-            const endpoint = "https://f215-2a12-5940-f25a-00-2.ngrok-free.app/signup/"
+            const endpoint = "http://127.0.0.1:8000/signup/"
             const sanitizedData = {
               username : data.username,
               password: data.password
