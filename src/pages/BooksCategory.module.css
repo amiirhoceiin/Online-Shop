@@ -1,37 +1,31 @@
 @font-face {
     font-family: 'IRANSansXMedium';
     src: url('../fonts/iransansx/IRANSansXMedium.ttf') format('truetype');
-}
-@font-face {
- font-family: 'iranyekan';
- src: url('../fonts/iranYekan/iranyekanwebregularfanum.woff') format('truetype');
-}
-@font-face{
+ }
+ @font-face {
+    font-family: 'iranyekan';
+    src: url('../fonts/iranYekan/iranyekanwebregularfanum.woff') format('truetype');
+ }
+ @font-face {
     font-family: 'IRANSansXRegular';
     src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
-}
-
-
-
-.containerstyle{
- display: flex;
- width:100%;
- max-width:1360px
-}
-
-
-
-.row.rowstyle {
+ }
+ 
+ .containerstyle {
+    display: flex;
+    width: 100%;
+    max-width: 1360px;
+ }
+ 
+ .rowstyle {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     gap: 12px;
-    
-}
-
-
-.custom-col {
+ }
+ 
+ .customCol {
     width: 100%;
     max-width: 262.4px;
     height: 364px;
@@ -40,10 +34,8 @@
     border-radius: 0;
     border: none;
  }
-
-
-
-.custom-col .cardtopstyle {
+ 
+ .cardTopStyle {
     width: 262.4px;
     height: 288px;
     display: flex;
@@ -51,11 +43,16 @@
     padding: 12px;
     background-color: rgba(237, 237, 237, 1);
  }
- .custom-col .cardtopstyle.dark {
-   background-color: rgba(50, 50, 50, 1);
+ .cardTopStyleDark {
+    width: 262.4px;
+    height: 288px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background-color: rgba(50, 50, 50, 1);
  }
-
- .cardtopstyle .divtopstyle {
+ 
+ .divTopStyle {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -63,8 +60,8 @@
     width: 38px;
     height: 264px;
  }
-
- .cardtopstyle .buttonoffstyle{
+ 
+ .buttonOffStyle {
     border: none;
     border-radius: 32px;
     position: absolute;
@@ -76,33 +73,37 @@
     font-family: 'IRANSansXRegular';
     font-weight: 400;
     font-size: 14px;
-
  }
- .cardtopstyle .buttonbuystyle {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+ 
+ .buttonBuyStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 32px;
     height: 32px;
     border-radius: 32px;
     background-color: rgba(255, 255, 255, 1);
     color: rgba(32, 32, 32, 1);
  }
- .cardtopstyle .buttonbuystyle.dark {
-   background-color: rgba(32, 32, 32, 1);
-   color: rgba(255, 255, 255, 1);
+ .buttonBuyStyleDark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(255, 255, 255, 1);
  }
-
-
-
- .cardtopstyle .card-img-top {
-    width:168.51px;
-    height:264px;
+ 
+ .cardImgTop {
+    width: 168.51px;
+    height: 264px;
     border-radius: 0;
-    filter:brightness(80%);
+    filter: brightness(80%);
  }
-
- .custom-col .card-body{
+ 
+ .cardBody {
     width: 100%;
     display: flex;
     max-width: 262.4px;
@@ -111,63 +112,82 @@
     padding: 0;
     background-color: rgba(255, 255, 255, 1);
  }
- .custom-col .card-body.dark {
-   background-color: rgba(32, 32, 32, 1);
+ .cardBodyDrak {
+    width: 100%;
+    display: flex;
+    max-width: 262.4px;
+    height: 76px;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(32, 32, 32, 1);
  }
-
-
- .card-body .pricedivstyle{
+ 
+ .priceDivStyle {
     width: 88px;
     height: 60px;
     display: flex;
     gap: 4px;
     padding: 12px;
  }
-
- .pricedivstyle .toman{
+ 
+ .toman {
     width: 19px;
     height: 18px;
     white-space: nowrap;
     font-size: 12px;
     font-family: 'IRANSansXRegular';
     color: rgba(32, 32, 32, 0.6);
- } 
- .pricedivstyle .toman.dark{
-   color: rgba(255, 255, 255, 0.6);
  }
-
- .pricedivstyle .pricestyle {
+ .tomanDark {
+    width: 19px;
+    height: 18px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-family: 'IRANSansXRegular';
+    color: rgba(32, 32, 32, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+ }
+ 
+ .priceStyle {
     display: flex;
     flex-direction: column;
     width: 41px;
     height: 36px;
     white-space: nowrap;
  }
-
- .pricestyle .pricetextstyle{
+ 
+ .priceTextStyle {
     font-size: 14px;
     width: 39px;
     height: 18px;
     font-weight: 500;
     font-family: 'iranyekan';
  }
- .pricestyle .pricetextstyle.dark{
-  color: rgba(255, 255, 255, 1);
+ .priceTextStyleDark {
+    font-size: 14px;
+    width: 39px;
+    height: 18px;
+    font-weight: 500;
+    font-family: 'iranyekan';
+    color: rgba(255, 255, 255, 1);
  }
- .pricestyle .offpricetextstyle {
-   height: 18px;
+ 
+ .offPriceTextStyle {
+    height: 18px;
     font-size: 12px;
     font-weight: 400;
     font-family: 'iranyekan';
     color: rgba(32, 32, 32, 0.6);
  }
- .pricestyle .offpricetextstyle.dark {
-  color: rgba(255, 255, 255, 0.6);
+ .offPriceTextStyleDark {
+    height: 18px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'iranyekan';
+    color: rgba(255, 255, 255, 0.6);
  }
-
-
-
- .card-body .titlestyle {
+ 
+ .titleStyle {
     width: 174.4px;
     height: 76px;
     display: flex;
@@ -177,22 +197,28 @@
     gap: 1px;
     padding: 12px;
  }
-
- .titlestyle .titletextstyle {
+ 
+ .titleTextStyle {
     width: 150.4px;
     height: 24px;
     white-space: nowrap;
     font-family: 'IRANSansXMedium';
     font-weight: 500;
     font-size: 16px;
-   text-align: right;
+    text-align: right;
  }
- .titlestyle .titletextstyle.dark {
-   color: rgba(255, 255, 255, 1);
+ .titleTextStyleDark {
+    width: 150.4px;
+    height: 24px;
+    white-space: nowrap;
+    font-family: 'IRANSansXMedium';
+    font-weight: 500;
+    font-size: 16px;
+    text-align: right;
+    color: rgba(255, 255, 255, 1);
  }
-
-
- .titlestyle .authorstyle {
+ 
+ .authorStyle {
     position: relative;
     top: 2.5px;
     right: 0.5px;
@@ -206,6 +232,6 @@
     font-family: 'IRANSansXRegular';
     text-align: right;
  }
- .titlestyle .authorstyle.dark{
-   color: rgba(255, 255, 255, 0.6);
+ .authorStyleDark {
+    color: rgba(255, 255, 255, 0.6);
  }

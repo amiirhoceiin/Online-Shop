@@ -62,40 +62,46 @@ export default function Header() {
     
 
 
-  <li className="nav-item">
-        <button
-          className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
-          onClick={() => setIsCateoryOpen(!iscategoryOpen)}
-          style={{ background: "none", border: "none", cursor: "pointer" }}
-        >
-          <i className="fa-solid fa-list"></i>
-          <span>دسته بندی موضوعی</span>
-        </button>
-        {iscategoryOpen && (
-          <ul className="list-group mt-2"
-          style={{
-            position: "absolute",
-            top: "100%", 
-            zIndex: "1050", // مقدار زیاد برای قرارگیری بالای کاروسل
-            backgroundColor: "#fff", 
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", 
-            borderRadius: "5px",
-            minWidth: "200px",
-            padding: "5px"
-          }}>
-            <li className="list-group-item" >
-              <Link style={{textDecoration:'none',color:'black'}} to="/books/داستان">داستان</Link>
-            </li>
-            <li className="list-group-item">
-              <Link style={{textDecoration:'none',color:'black'}} to="/books/علمی">علمی</Link>
-            </li>
-            <li className="list-group-item">
-              <Link style={{textDecoration:'none',color:'black'}} to="/books/تاریخی">تاریخی</Link>
-            </li>
-          </ul>
-        )}
-      </li>
+  <li className="nav-item"
+        onMouseEnter={() =>{if(screenWidth>750) setIsCateoryOpen(true)}}
+        onMouseLeave={() => {if(screenWidth>750) setIsCateoryOpen(false)}}
+        style={{ position: "relative" }}>
 
+      <button
+        className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
+        onClick={()=>{if(screenWidth<=750) setIsCateoryOpen(!iscategoryOpen)}}
+        style={{ background: "none", border: "none", cursor: "pointer" }}
+      >
+        <i className="fa-solid fa-list"></i>
+        <span>دسته بندی موضوعی</span>
+      </button>
+
+      {iscategoryOpen && (
+        <ul className="list-group"
+            style={{
+              position: "absolute",
+              top: "100%",
+              zIndex: "1050",
+              backgroundColor: "#fff",
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+              borderRadius: "5px",
+              minWidth: "200px",
+              padding: "5px"
+            }}
+            onMouseEnter={() =>{if(screenWidth>750) setIsCateoryOpen(true)}}
+            onMouseLeave={() => {if(screenWidth>750) setIsCateoryOpen(false)}}>
+          <li className="list-group-item">
+            <Link style={{ textDecoration: 'none', color: 'black' }} to="/bookscategory/story">داستان</Link>
+          </li>
+          <li className="list-group-item">
+            <Link style={{ textDecoration: 'none', color: 'black' }} to="/bookscategory/">علمی</Link>
+          </li>
+          <li className="list-group-item">
+            <Link style={{ textDecoration: 'none', color: 'black' }} to="/bookscategory/تاریخی">تاریخی</Link>
+          </li>
+        </ul>
+      )}
+    </li>
 
   <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/featured-books">
