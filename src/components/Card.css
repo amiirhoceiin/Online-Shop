@@ -13,7 +13,7 @@
 
 
 
-.container-fluid.containerstyle{
+.containerstyle{
  display: flex;
  width:100%;
  max-width:1360px

@@ -84,13 +84,13 @@ export default function Header() {
             padding: "5px"
           }}>
             <li className="list-group-item" >
-              <Link style={{textDecoration:'none',color:'black'}} to="/books/story">داستانی</Link>
+              <Link style={{textDecoration:'none',color:'black'}} to="/books/داستان">داستان</Link>
             </li>
             <li className="list-group-item">
-              <Link style={{textDecoration:'none',color:'black'}} to="/books/science">علمی</Link>
+              <Link style={{textDecoration:'none',color:'black'}} to="/books/علمی">علمی</Link>
             </li>
             <li className="list-group-item">
-              <Link style={{textDecoration:'none',color:'black'}} to="/books/history">تاریخی</Link>
+              <Link style={{textDecoration:'none',color:'black'}} to="/books/تاریخی">تاریخی</Link>
             </li>
           </ul>
         )}

@@ -31,17 +31,17 @@ export default function Card() {
     return <div>{error.message}</div>
    }
  
-   const limitedData = bookSuggestion?.slice(0,5);
+   const limitedBooks = bookSuggestion?.slice(0,5);
  return(
    <div className='container-fluid containerstyle'>
    <div className='rowstyle row'>
-       {limitedData?.map((b) => {
+       {limitedBooks?.map((limitedBook) => {
                  const discountPercentage =
-                 b.price && b.discounted_price
-                     ? (((b.price - b.discounted_price) / b.price) * 100)
+                 limitedBook.price && limitedBook.discounted_price
+                     ? (((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100)
                      : null;
            return (
-               <div key={b.Info.id} className='card custom-col'>
+               <div key={limitedBook.Info.id} className='card custom-col'>
                    <div className={`cardtopstyle ${mode}`}>
                        <div className='divtopstyle'>
                         
@@ -56,34 +56,34 @@ export default function Card() {
                            </button>
                        </div>
 
-                       <img src={`http://${b.image_url}`} className="card-img-top" alt="تصویر محصول" />
+                       <img src={`http://${limitedBook.image_url}`} className="card-img-top" alt={limitedBook.title} />
                    </div>
                    <div className={`card-body ${mode}`}>
                        <div className='pricedivstyle'>
                            <span className={`toman ${mode}`}>ءتءءء</span>
-                           {b.discounted_price ? (
+                           {limitedBook.discounted_price ? (
                                <div className="pricestyle">
-                               <span className={`pricetextstyle ${mode}`}>{b.discounted_price.toLocaleString('fa-IR')}</span>
+                               <span className={`pricetextstyle ${mode}`}>{limitedBook.discounted_price.toLocaleString('fa-IR')}</span>
                               <span className={`offpricetextstyle text-decoration-line-through ${mode}`}>
-                                {b.price.toLocaleString('fa-IR')}
+                                {limitedBook.price.toLocaleString('fa-IR')}
                                </span>
                                   </div>
                               ) : (
                                 <div className="pricestyle">
-                                <span className={`pricetextstyle ${mode}`}>{b.price.toLocaleString('fa-IR')}</span>
+                                <span className={`pricetextstyle ${mode}`}>{limitedBook.price.toLocaleString('fa-IR')}</span>
                                 </div>
                                )}
                        </div>
 
                        <div className='titlestyle'>
-                           <div className={`titletextstyle ${mode}`}>{b.title}</div>
-                           <div className={`authorstyle ${mode}`}>{b.Info.author}</div>
+                           <div className={`titletextstyle ${mode}`}>{limitedBook.title}</div>
+                           <div className={`authorstyle ${mode}`}>{limitedBook.Info.author}</div>
                        </div>
                    </div>
                </div>
            );
        })}
-   </div>
+    </div>
 </div>
    
  );
