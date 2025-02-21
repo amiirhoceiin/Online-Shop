@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
 const fetchSlider = ()=>{
- return axios.get('http://localhost:3000/books').then(res=>res.data);
+ return axios.get('http://127.0.0.1:8000/product/slider/').then(res=>res.data);
 }
 
 export default function Carousel() {
@@ -45,7 +45,7 @@ export default function Carousel() {
   {limitedData?.map((limited,index)=>(
       <div key={limited.id} 
       className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-        <img src={limited.imageSlider} title={limited.title} className="d-block w-100 " alt="..."/>
+        <img src={`http://127.0.0.1:8000/${limited.image.image_url}`} title={limited.title} className="d-block w-100 " alt="..."/>
       </div>
      ))}
   </div>
