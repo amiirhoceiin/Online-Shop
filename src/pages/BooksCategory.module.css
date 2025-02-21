@@ -13,8 +13,12 @@
  
  .containerstyle {
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 1360px;
+   
+    height: 100vh;
+   
  }
  
  .rowstyle {
@@ -73,6 +77,7 @@
     font-family: 'IRANSansXRegular';
     font-weight: 400;
     font-size: 14px;
+    padding: 0;
  }
  
  .buttonBuyStyle {
@@ -234,4 +239,13 @@
  }
  .authorStyleDark {
     color: rgba(255, 255, 255, 0.6);
+ }
+
+ .pagination {
+   position: relative;
+   bottom: 0;
+   width: 100%;
+   z-index: 1000;
+   padding: 10px;
+   text-align: center;
  }
