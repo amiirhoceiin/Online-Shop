@@ -20,8 +20,7 @@
 .rowstyle {
    display: flex;
    flex-wrap: nowrap;
- 
-   overflow-y: auto;
+   overflow-x: auto;
    gap: 12px;
 }
 
@@ -197,6 +196,8 @@
    justify-content: flex-start;
    gap: 1px;
    padding: 12px;
+  
+   
 }
 
 .titleTextStyle {
@@ -205,8 +206,9 @@
    white-space: nowrap;
    font-family: 'IRANSansXMedium';
    font-weight: 500;
-   font-size: 16px;
+   
    text-align: right;
+   
 }
 .titleTextStyleDark {
    width: 150.4px;
@@ -228,11 +230,15 @@
    height: 24px;
    font-weight: 400;
    line-height: 24px;
-   font-size: 16px;
+   font-size: 1rem;
    color: rgba(32, 32, 32, 0.6);
    font-family: 'IRANSansXRegular';
+   text-overflow: ellipsis;
    text-align: right;
+   overflow: hidden;
+   direction: rtl; 
 }
+
 .authorStyleDark {
    color: rgba(255, 255, 255, 0.6);
 }
