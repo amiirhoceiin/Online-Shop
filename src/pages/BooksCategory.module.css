@@ -204,41 +204,64 @@
  }
  
  .titleTextStyle {
-    width: 150.4px;
-    height: 24px;
-    white-space: nowrap;
-    font-family: 'IRANSansXMedium';
-    font-weight: 500;
-    font-size: 16px;
-    text-align: right;
+   width: 150.4px;
+   height: 24px;
+   white-space: nowrap;
+   font-family: 'IRANSansXMedium';
+   font-weight: 500;
+   font-size: 16px;
+   text-align: right;
+   overflow: hidden;
+   direction: rtl; 
+   text-overflow: ellipsis;
  }
  .titleTextStyleDark {
-    width: 150.4px;
-    height: 24px;
-    white-space: nowrap;
-    font-family: 'IRANSansXMedium';
-    font-weight: 500;
-    font-size: 16px;
-    text-align: right;
-    color: rgba(255, 255, 255, 1);
+   width: 150.4px;
+   height: 24px;
+   white-space: nowrap;
+   font-family: 'IRANSansXMedium';
+   font-weight: 500;
+   font-size: 16px;
+   text-align: right;
+   color: rgba(255, 255, 255, 1);
+   overflow: hidden;
+   direction: rtl; 
+   text-overflow: ellipsis;
  }
  
  .authorStyle {
-    position: relative;
-    top: 2.5px;
-    right: 0.5px;
-    white-space: nowrap;
-    width: 150.4px;
-    height: 24px;
-    font-weight: 400;
-    line-height: 24px;
-    font-size: 16px;
-    color: rgba(32, 32, 32, 0.6);
-    font-family: 'IRANSansXRegular';
-    text-align: right;
+   position: relative;
+   top: 2.5px;
+   right: 0.5px;
+   white-space: nowrap;
+   width: 150.4px;
+   height: 24px;
+   font-weight: 400;
+   line-height: 24px;
+   font-size: 1rem;
+   color: rgba(32, 32, 32, 0.6);
+   font-family: 'IRANSansXRegular';
+   text-overflow: ellipsis;
+   text-align: right;
+   overflow: hidden;
+   direction: rtl; 
  }
  .authorStyleDark {
-    color: rgba(255, 255, 255, 0.6);
+   color: rgba(255, 255, 255, 0.6);
+   position: relative;
+   top: 2.5px;
+   right: 0.5px;
+   white-space: nowrap;
+   width: 150.4px;
+   height: 24px;
+   font-weight: 400;
+   line-height: 24px;
+   font-size: 1rem;
+   font-family: 'IRANSansXRegular';
+   text-overflow: ellipsis;
+   text-align: right;
+   overflow: hidden;
+   direction: rtl; 
  }
 
  .pagination {
