@@ -34,7 +34,7 @@ export default function AppWrapper() {
     <BrowserRouter>
      <QueryClientProvider client={queryClient}>
        <App />
-      <ReactQueryDevtools/>
+    
      </QueryClientProvider>
     </BrowserRouter>
   );

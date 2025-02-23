@@ -2,6 +2,7 @@ import React from 'react';
 import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Card.module.css'; // Import CSS Module
 
 const useFetch = () => {
@@ -52,11 +53,14 @@ export default function Card() {
                                         <i className="fa-solid fa-cart-shopping"></i>
                                     </button>
                                 </div>
-                                <img
+                               <Link to={`/BookInformation/${limitedBook.slug}`}>
+                                    <img
                                     src={`http://127.0.0.1:8000/${limitedBook.image.image_url}`}
                                     className={styles.cardImgTop}
                                     alt={limitedBook.title}
-                                />
+                                    />
+                                </Link>
+  
                             </div>
                             <div className={`${ mode ==='dark' ?styles.cardBodyDrak: styles.cardBody}`}>
                                 <div className={styles.priceDivStyle}>
