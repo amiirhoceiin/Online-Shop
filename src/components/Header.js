@@ -28,12 +28,18 @@ export default function Header() {
   
   return (
     <div className={`headerstyle ${mode}`}> 
-    
+  
       <nav className={`navbar navbarStyle d-flex  ${mode}`}>
        <form className='container-fluid formStyle' onSubmit={(e)=>e.preventDefault()}>
        <button className={`circuleButton1 btn ${mode}`} onClick={()=>changeMode(mode === 'dark' ? 'light' : 'dark') } ><i className="fa-regular fa-moon"></i></button>
 
-          <button className={`circuleButton2 btn ${mode}`}><i className="fa fa-shopping-cart" aria-hidden="true"></i></button>
+          <button className={`circuleButton2 btn ${mode}`}>
+            <i className="fa fa-shopping-cart" aria-hidden="true"></i><span class="position-absolute top-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden"></span>
+            </span>
+            
+            
+            </button>
 
        { !isAuthenticated?   <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
         {screenWidth > 430 ? headerButton : null}
@@ -46,6 +52,8 @@ export default function Header() {
       </form>
      </nav>
       <hr className={`responsive-hr ${mode}`}/>
+
+      
       <nav className={`navbar navbar-expand-lg navbar2Style ${mode}`}>
       <div className="container-fluid ">
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
