@@ -10,22 +10,19 @@
     font-family: 'IRANSansXRegular';
     src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
  }
+ .divStyleDark {
+ background-color: rgba(32, 32, 32, 1);
+ }
  
  .containerstyle {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 1360px;
-   
-    height: 100vh;
-   
  }
  
  .rowstyle {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
     gap: 12px;
  }
  
@@ -267,8 +264,44 @@
  .pagination {
    position: relative;
    bottom: 0;
+   left: 0;
    width: 100%;
-   z-index: 1000;
+   background-color: white; 
    padding: 10px;
    text-align: center;
+   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+ }
+
+ .paginationDark {
+   position: relative;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   background-color: rgb(0, 0, 0); 
+   padding: 10px;
+   text-align: center;
+   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+   color: white;
+   
+ }
+
+ .btnprevStyle {
+   color: rgb(0, 0, 0) !important;
+ }
+ .btnprevStyle:hover {
+   border-bottom: 1px solid rgb(86, 140, 234) ;
+ }
+ .btnprevStyleDark {
+   color: white !important;
+ }
+
+  
+ .btnnextStyle {
+   color: rgb(0, 0, 0) !important;
+ }
+ .btnnextStyle:hover {
+   border-bottom: 1px solid rgb(86, 140, 234) ;
+ }
+ .btnnextStyleDark{
+   color: white !important;
  }
