@@ -38,8 +38,8 @@ export default function Books() {
   }
 
   return (
-    <div  styles={{border: '10px solid blue' ,width: '100%' ,height: '100px', backgroundColor: 'black', zindex: "100000"}} className={`${mode ==='dark'? styles.divStyleDark: styles.divStyle} `}>
-    <div className={`${styles.containerstyle} container-fluid`}>
+    <div   className={`${mode ==='dark'? styles.divStyleDark: styles.divStyle} `}>
+    <div className={`${mode ==='dark' ? styles.containerstyleDark: styles.containerstyle} container-fluid`}>
       <div className={`${styles.rowstyle} row`}>
         {Books?.map((limitedBook) => {
           const discountPercentage =
