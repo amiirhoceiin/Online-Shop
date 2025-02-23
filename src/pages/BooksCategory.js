@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from './BooksCategory.module.css';
 import { useParams } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
+import Footer from '../components/Footer';
 
 const FetchBook = (category, page, limit) => {
   return axios
@@ -114,6 +115,7 @@ export default function Books() {
           بعدی
         </button>
       </div>
+      <Footer/>
     </div>
   );
 }
