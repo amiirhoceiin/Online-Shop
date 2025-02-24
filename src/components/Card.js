@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Card.module.css'; // Import CSS Module
+import { useNumberPurchase } from '../hooks/useNumberPurchase';
 
 const useFetch = () => {
     return axios.get('http://127.0.0.1:8000/product/most-sells-products/').then((res) => res.data);
@@ -11,6 +12,8 @@ const useFetch = () => {
 
 export default function Card() {
     const { mode } = useTheme();
+     const {changeNumberPurchase}=useNumberPurchase();
+    
 
     const { data: bookSuggestion, isLoading, isError, error } = useQuery({
         queryKey: ['bookSuggestion'],
@@ -49,7 +52,7 @@ export default function Card() {
                                             {`${discountPercentage.toLocaleString('fa-IR')}٪`}
                                         </button>
                                     ) : null}
-                                    <button className={`${mode ==='dark' ? styles.buttonBuyStyleDark: styles.buttonBuyStyle} btn `}>
+                                    <button onClick={()=>changeNumberPurchase()} className={`${mode ==='dark' ? styles.buttonBuyStyleDark: styles.buttonBuyStyle} btn `}>
                                         <i className="fa-solid fa-cart-shopping"></i>
                                     </button>
                                 </div>
@@ -83,7 +86,9 @@ export default function Card() {
                                     )}
                                 </div>
                                 <div className={styles.titleStyle}>
-                                    <div className={`${mode ==="dark" ?styles.titleTextStyleDark: styles.titleTextStyle}`}>{limitedBook.title}</div>
+                                    <Link className={`${mode ==="dark" ?styles.titleTextStyleDark: styles.titleTextStyle}`} to={`/BookInformation/${limitedBook.slug}`}>
+                                        <div >{limitedBook.title}</div>
+                                    </Link>
                                     <div className={`${mode==="dark" ? styles.authorStyleDark : styles.authorStyle}`}>{limitedBook.Info.author}</div>
                                 </div>
                             </div>

@@ -6,12 +6,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './context/themecontext';
+import { NumberPurchaseProvider } from './context/numberPurchasescontext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode> 
     <ThemeProvider>
-      <App />
+        <NumberPurchaseProvider>
+         <App />
+        </NumberPurchaseProvider>
     </ThemeProvider> 
   </React.StrictMode>
 );

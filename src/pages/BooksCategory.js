@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useState } from 'react';
 import styles from './BooksCategory.module.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
 import Footer from '../components/Footer';
+import { useNumberPurchase } from '../hooks/useNumberPurchase';
+
 
 const FetchBook = (category, page, limit) => {
   return axios
@@ -15,6 +17,7 @@ const FetchBook = (category, page, limit) => {
 export default function Books() {
   const { category } = useParams();
   const { mode } = useTheme();
+   const {changeNumberPurchase}=useNumberPurchase();
   const [page, setPage] = useState(1);
   const limit = 5; 
 
@@ -58,15 +61,18 @@ export default function Books() {
                       {`${discountPercentage.toLocaleString('fa-IR')}٪`}
                     </button>
                   ) : null}
-                  <button className={`${mode === 'dark' ? styles.buttonBuyStyleDark : styles.buttonBuyStyle} btn `}>
+                  <button onClick={()=>changeNumberPurchase()} className={`${mode === 'dark' ? styles.buttonBuyStyleDark : styles.buttonBuyStyle} btn `}>
                     <i className="fa-solid fa-cart-shopping"></i>
                   </button>
                 </div>
-                <img
-                  src={`http://127.0.0.1:8000/${limitedBook.image.image_url}`}
-                  className={styles.cardImgTop}
-                  alt={limitedBook.title}
-                />
+                <Link to={`/BookInformation/${limitedBook.slug}`}>
+                  <img
+                    src={`http://127.0.0.1:8000/${limitedBook.image.image_url}`}
+                    className={styles.cardImgTop}
+                    alt={limitedBook.title}
+                  />
+                </Link>
+
               </div>
               <div className={`${mode === 'dark' ? styles.cardBodyDrak : styles.cardBody}`}>
                 <div className={styles.priceDivStyle}>
@@ -88,14 +94,17 @@ export default function Books() {
                     </div>
                   )}
                 </div>
+
+
                 <div className={styles.titleStyle}>
-                  <div className={`${mode === "dark" ? styles.titleTextStyleDark : styles.titleTextStyle}`}>{limitedBook.title}</div>
+                    <Link to={`/BookInformation/${limitedBook.slug}`} className={`${mode === "dark" ? styles.titleTextStyleDark : styles.titleTextStyle}`}>
+                         <div>{limitedBook.title}</div>
+                    </Link>
                   <div className={`${mode === "dark" ? styles.authorStyleDark : styles.authorStyle}`}>{limitedBook.Info.author}</div>
                 </div>
-              </div>
-              </div>
-          
-            </div>
+                 </div>
+                </div>
+           </div>
           );
         })}
       </div>

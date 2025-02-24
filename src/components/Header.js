@@ -4,9 +4,11 @@ import searchIcon from '../img/icon/icons8-search-24.svg';
 import { useTheme } from '../hooks/useTheme';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useNumberPurchase } from '../hooks/useNumberPurchase';
 
 export default function Header() {
   const {mode,changeMode} = useTheme(); 
+  const {numberPurchase}=useNumberPurchase();
   const [iscategoryOpen, setIsCateoryOpen] = useState(false);
   const headerButton='ورود / ثبت نام';
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -34,12 +36,13 @@ export default function Header() {
        <button className={`circuleButton1 btn ${mode}`} onClick={()=>changeMode(mode === 'dark' ? 'light' : 'dark') } ><i className="fa-regular fa-moon"></i></button>
 
           <button className={`circuleButton2 btn ${mode}`}>
-            <i className="fa fa-shopping-cart" aria-hidden="true"></i><span class="position-absolute top-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-            <span class="visually-hidden"></span>
+
+            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span class="position-absolute badge top-0 translate-middle p-2 bg-danger  rounded-circle">
+            {numberPurchase}
+               <span class="visually-hidden"></span>
             </span>
-            
-            
-            </button>
+          </button>
 
        { !isAuthenticated?   <button className={`headerButtonStyle ${mode}`} onClick={handleclick}>
         {screenWidth > 430 ? headerButton : null}

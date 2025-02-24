@@ -8,7 +8,7 @@ export function ThemeProvider({children}){
 
     const [mode,setMode] = useState('light')
     const changeMode = (newmode)=>{
-        setMode(newmode);
+        setMode(newmode); 
     }
     // const themeReducer =(state,action)=>{
     //     switch(action.type){ 
