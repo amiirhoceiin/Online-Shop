@@ -207,8 +207,10 @@
    font-size: 16px;
    text-align: right;
    overflow: hidden;
+   color: rgba(32, 32, 32, 1);
    direction: rtl; 
    text-overflow: ellipsis;
+   text-decoration: none;
 }
 .titleTextStyleDark {
    width: 150.4px;
@@ -222,6 +224,7 @@
    overflow: hidden;
    direction: rtl; 
    text-overflow: ellipsis;
+   text-decoration: none;
 }
 
 .authorStyle {
