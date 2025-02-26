@@ -63,85 +63,76 @@ export default function Header() {
       <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse  " id="navbarNav" style={{direction:'rtl'}}>
+
+
       <ul className="navbar-nav navbarUlStyle">
-  <li className="nav-item">
-    <Link className={`nav-link ${mode}`} to="/">
-      <i className="fa-solid fa-house"></i>
-      <span>خانه</span>
-    </Link>
-  </li>
+
+
+        <li className="nav-item">
+          <Link className={`nav-link ${mode}`} to="/">
+          <i className="fa-solid fa-house"></i>
+          <span>خانه</span>
+          </Link>
+        </li>
     
 
+        <li className="nav-item"
+    onMouseEnter={() => { if (screenWidth > 750) setIsCateoryOpen(true) }}
+    onMouseLeave={() => { if (screenWidth > 750) setIsCateoryOpen(false) }}
+    style={{ position: "relative" }}>
 
-  <li className="nav-item"
-        onMouseEnter={() =>{if(screenWidth>750) setIsCateoryOpen(true)}}
-        onMouseLeave={() => {if(screenWidth>750) setIsCateoryOpen(false)}}
-        style={{ position: "relative" }}>
+    <button
+      className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
+      onClick={() => { if (screenWidth <= 750) setIsCateoryOpen(!iscategoryOpen) }}
+      style={{ background: "none", border: "none", cursor: "pointer" }}>
 
-      <button
-        className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
-        onClick={()=>{if(screenWidth<=750) setIsCateoryOpen(!iscategoryOpen)}}
-        style={{ background: "none", border: "none", cursor: "pointer" }}
-      >
-        <i className="fa-solid fa-list"></i>
-        <span>دسته بندی موضوعی</span>
-      </button>
+      <i className="fa-solid fa-list"></i>
+      <span>دسته بندی موضوعی</span>
+    </button>
 
-      {iscategoryOpen && (
-        <ul className="list-group"
-            style={{
-              position: "absolute",
-              top: "100%",
-              zIndex: "1050",
-              backgroundColor: "#fff",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              borderRadius: "5px",
-              minWidth: "200px",
-              padding: "5px"
-            }}
-            onMouseEnter={() =>{if(screenWidth>750) setIsCateoryOpen(true)}}
-            onMouseLeave={() => {if(screenWidth>750) setIsCateoryOpen(false)}}>
-          <li className="list-group-item">
-            <Link style={{ textDecoration: 'none', color: 'black' }} to="/bookscategory/story">داستان</Link>
-          </li>
-          <li className="list-group-item">
-            <Link style={{ textDecoration: 'none', color: 'black' }} to="/bookscategory/">علمی</Link>
-          </li>
-          <li className="list-group-item">
-            <Link style={{ textDecoration: 'none', color: 'black' }} to="/bookscategory/تاریخی">تاریخی</Link>
-          </li>
-        </ul>
-      )}
-    </li>
+    <ul className={`list-group list-group-flush ${iscategoryOpen ? "show" : ""}`}
+        onMouseEnter={() => { if (screenWidth > 750) setIsCateoryOpen(true) }}
+        onMouseLeave={() => { if (screenWidth > 750) setIsCateoryOpen(false) }}>
+      <li className="list-group-item">
+        <Link className='Linkitem' to="/bookscategory/story">داستان</Link>
+      </li>
+      <li className="list-group-item">
+        <Link className='Linkitem' to="/bookscategory/">علمی</Link>
+      </li>
+      <li className="list-group-item">
+        <Link className='Linkitem' to="/bookscategory/تاریخی">تاریخی</Link>
+      </li>
+    </ul>
+</li>
 
-  <li className="nav-item">
+   <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/featured-books">
       <i className="fa-regular fa-bookmark"></i>
       <span>کتاب های برگزیده</span>
     </Link>
-  </li>
+    </li>
 
-  <li className="nav-item">
+   <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/literary-awards">
       <i className="fa-solid fa-medal"></i>
       <span>جوایز ادبی</span>
     </Link>
-  </li>
+   </li>
 
-  <li className="nav-item">
+   <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/world-literature">
       <i className="fa-solid fa-earth-americas"></i>
       <span>ادبیات ملل</span>
     </Link>
-  </li>
+   </li>
 
-  <li className="nav-item">
+   <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/suggested-package">
       <i className="fa-solid fa-box"></i>
       <span>بسته پیشنهادی</span>
     </Link>
-  </li>
-</ul>
+   </li>
+  </ul>
      </div>
      </div>
      </nav>

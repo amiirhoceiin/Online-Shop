@@ -49,6 +49,9 @@ color: rgba(44, 128, 255, 1);
 font-size: 32px;
 line-height: 48px;
 }
+.brandStyle:hover{
+ color: rgba(44, 128, 255, 1);;
+}
 
 .headerSearchStyle {
 display: flex;
@@ -135,15 +138,22 @@ color: rgba(255, 255, 255, 1);
     max-width: 1360px; 
     padding: 0; 
     height: 40px;
+    
 }
-
+ 
 .nav-item {
     margin: 0;
-    padding: 0 12px; 
-    text-decoration: none
-    ;
-    flex-grow: 0; 
-}
+    padding: 0 12px;
+    text-decoration: none;
+    flex-grow: 0;
+    transition: border-color 0.3s ease-in;
+    border-bottom: 1px solid transparent; 
+  }
+  
+  .nav-item:hover {
+    border-bottom: 1px solid rgba(44, 128, 255, 1); 
+  }
+  
 
 .nav-link {
     display: flex;
@@ -151,6 +161,7 @@ color: rgba(255, 255, 255, 1);
     gap: 4px;
     font-size: 16px;
     font-family: 'IRANSansXDemiBold';
+    
 }
 
 
@@ -183,3 +194,35 @@ span .icon {
 .responsive-hr.dark {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.list-group {
+    position: absolute;
+    top: 100%;
+    z-index: 1050;
+    transition: opacity 0.3s ease, transform 0.5s ease, visibility 0.5s ease;
+    font-family: 'IRANSansXMedium';
+    opacity: 0;
+    transform: translateY(-10px);
+    border-radius: 10%;
+  }
+  
+  .list-group.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .list-group-item {
+   
+    border: none;
+  }
+
+  .Linkitem {
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease;
+  }
+  .Linkitem:hover{
+   color:  rgba(44, 128, 255, 1);
+  }
+
+  
