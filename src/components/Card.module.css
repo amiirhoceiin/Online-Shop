@@ -15,6 +15,7 @@
    display: flex;
    width: 100%;
    max-width: 1360px;
+
 }
 
 .rowstyle {
@@ -22,6 +23,7 @@
    flex-wrap: nowrap;
    overflow-x: auto;
    gap: 12px;
+   
 }
 
 .customCol {
@@ -32,9 +34,12 @@
    padding: 0;
    border-radius: 0;
    border: none;
+   overflow: hidden; 
+  
 }
 
 .cardTopStyle {
+  
    width: 262.4px;
    height: 288px;
    display: flex;
@@ -85,6 +90,10 @@
    background-color: rgba(255, 255, 255, 1);
    color: rgba(32, 32, 32, 1);
 }
+.buttonBuyStyle:hover {
+   background-color: rgba(32, 32, 32, 1) !important;
+   color: rgba(255, 255, 255, 1);
+}
 .buttonBuyStyleDark {
    display: flex;
    justify-content: center;
@@ -101,6 +110,19 @@
    height: 264px;
    border-radius: 0;
    filter: brightness(80%);
+   transition: transform 0.2s ease;
+}
+.customCol:hover .cardImgTop{
+   transform: translateY(-12px);
+}
+.customCol:hover .cardTopStyle{
+   background-color: white;
+}
+.customCol:hover .cardTopStyleDark{
+   background-color: rgba(32, 32, 32, 1);
+}
+.customCol:hover .buttonBuyStyle{
+   background-color: rgba(237, 237, 237, 1);
 }
 
 .cardBody {
@@ -200,7 +222,7 @@
 
 .titleTextStyle {
    width: 150.4px;
-   height: 24px;
+   height: 24px; 
    white-space: nowrap;
    font-family: 'IRANSansXMedium';
    font-weight: 500;

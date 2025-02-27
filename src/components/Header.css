@@ -17,6 +17,7 @@
     width:100%;
     max-Width:1440px;
     margin:0 auto;
+    
 }
 .headerstyle.dark {
     background-color: rgba(32, 32, 32, 1);
@@ -29,6 +30,7 @@ padding-top: 16px;
 padding-bottom: 16px;
 flex-wrap: nowrap;
 margin: 0 auto;
+overflow: hidden;
 }
 
 .formStyle{ 
