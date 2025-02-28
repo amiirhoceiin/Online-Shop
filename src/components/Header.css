@@ -70,6 +70,7 @@ background-color: rgba(32, 32, 32, 0.08);
 }
 .headerSearchStyle.dark {
     background-color: rgba(255, 255, 255, 0.08);
+    color: white;
 }
 
 .headerButtonStyle {
