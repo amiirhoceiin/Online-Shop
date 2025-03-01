@@ -31,13 +31,21 @@ export default function BookInformation() {
 
   return (
     <div className={`container ${mode ==='dark' ? styles.containerfluidDark: styles.containerfluid}`}>
-        <div className={`${styles.cardStyle} card`} style={{width: '200px'}}>
-        <img src={`http://127.0.0.1:8000/${booksInformation.image.image_url}`} className="card-img-top" alt="..."/>
-        <div className="card-body">
-        <h5 className="card-title">{booksInformation.title}</h5>
-        <p className="card-text">
-          
-        </p>
+        <div className={`${styles.cardStyle} card`} >
+        <div className={`${styles.sec1CardStyle}`}>       
+           <img src={`http://127.0.0.1:8000/${booksInformation.image.image_url}`} className="card-img-top" style={{height:'300px',width:'200px'}} alt="..."/>
+             <div className="card-body">
+            <h4 className="card-title" style={{textAlign:'right'}}>{booksInformation.title}</h4>
+            <div className="card-text mt-5">
+            <p style={{textAlign:'right',direction:'rtl',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>  نویسنده : {booksInformation.Info.author}&nbsp; </p>
+            <p style={{textAlign:'right',direction:'rtl',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}> مترجمان : {booksInformation.Info.translator}&nbsp; </p>
+             <p style={{textAlign:'right',direction:'rtl',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>فروشنده : {booksInformation.Info.seller_name}</p>
+             <p style={{textAlign:'right',direction:'rtl',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>ناشر : {booksInformation.Info.publisher.title}</p>
+             <p style={{textAlign:'right',direction:'rtl',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>چاپ : {booksInformation.Info.print}</p>
+           
+
+        </div>
+        </div>
         </div>
         </div>
         <Footer/>

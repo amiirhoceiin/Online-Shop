@@ -20,6 +20,7 @@
     margin: 0 auto;
     height: 100vh;
     padding: 0;
+   
  }
  .containerfluidDark{
     display: flex;
@@ -35,5 +36,14 @@
  .cardStyle {
     margin: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    border: none;
+    margin: 50px 20px;
+ }
+
+ .sec1CardStyle{
+   display: flex;
  }
 
