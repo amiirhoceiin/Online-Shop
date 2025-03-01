@@ -31,9 +31,9 @@ export default function BookInformation() {
 
   return (
     <div className={`container ${mode ==='dark' ? styles.containerfluidDark: styles.containerfluid}`}>
-        <div className={`${styles.cardStyle} card`} >
+        <div className={`${mode === 'dark' ? styles.cardStyleDark :styles.cardStyle} card`} >
         <div className={`${styles.sec1CardStyle}`}>       
-           <img src={`http://127.0.0.1:8000/${booksInformation.image.image_url}`} className="card-img-top" style={{height:'300px',width:'200px'}} alt="..."/>
+           <img src={`http://127.0.0.1:8000/${booksInformation.image.image_url}`} className="card-img-top" style={{height:'300px',width:'200px',borderRadius:'25px'}} alt="..."/>
              <div className="card-body">
             <h4 className="card-title" style={{textAlign:'right'}}>{booksInformation.title}</h4>
             <div className="card-text mt-5">

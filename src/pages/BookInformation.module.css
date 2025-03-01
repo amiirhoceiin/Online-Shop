@@ -41,6 +41,18 @@
     direction: rtl;
     border: none;
     margin: 50px 20px;
+    background-color: white;
+ }
+ .cardStyleDark {
+   margin: 20px;
+   text-align: center;
+   display: flex;
+   flex-direction: row;
+   direction: rtl;
+   border: none;
+   margin: 50px 20px;
+   background-color: rgba(32, 32, 32, 1);
+   color: white;
  }
 
  .sec1CardStyle{
