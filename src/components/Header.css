@@ -205,16 +205,13 @@ span .icon {
     transition: opacity 0.3s ease, transform 0.5s ease, visibility 0.5s ease;
     font-family: 'IRANSansXMedium';
     opacity: 0;
-   
     border-radius: 10%;
-    
-    
+    pointer-events: none; /* غیرفعال کردن ورودی‌ها در حالت پیش‌فرض */
   }
   
   .list-group.show {
     opacity: 1;
-    
-    
+    pointer-events: auto; /* فعال کردن ورودی‌ها زمانی که لیست نمایش داده می‌شود */
   }
   
   .list-group-item {
