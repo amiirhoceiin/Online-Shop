@@ -12,7 +12,7 @@
     font-family: 'IRANSansXDemiBold';
     src: url('../fonts/iransansx/IRANSansXDemiBold.ttf') format('truetype');
 }
-
+ 
 .headerstyle{
     width:100%;
     max-Width:1440px;
@@ -205,27 +205,29 @@ span .icon {
     transition: opacity 0.3s ease, transform 0.5s ease, visibility 0.5s ease;
     font-family: 'IRANSansXMedium';
     opacity: 0;
-    transform: translateY(-10px);
+   
     border-radius: 10%;
+    
+    
   }
   
   .list-group.show {
     opacity: 1;
-    transform: translateY(0);
+    
+    
   }
-
+  
   .list-group-item {
-   
     border: none;
   }
-
+  
   .Linkitem {
     text-decoration: none;
     color: black;
     transition: all 0.2s ease;
+    
   }
-  .Linkitem:hover{
-   color:  rgba(44, 128, 255, 1);
-  }
-
   
+  .Linkitem:hover {
+    color: rgba(44, 128, 255, 1);
+  }

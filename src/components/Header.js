@@ -66,9 +66,9 @@ export default function Header() {
 
 
       <ul className="navbar-nav navbarUlStyle">
+ 
 
-
-        <li className="nav-item">
+        <li className="nav-item ">
           <Link className={`nav-link ${mode}`} to="/">
           <i className="fa-solid fa-house"></i>
           <span>خانه</span>
@@ -76,33 +76,56 @@ export default function Header() {
         </li>
     
 
-        <li className="nav-item"
-    onMouseEnter={() => { if (screenWidth > 750) setIsCateoryOpen(true) }}
-    onMouseLeave={() => { if (screenWidth > 750) setIsCateoryOpen(false) }}
-    style={{ position: "relative" }}>
+        <li
+  className="nav-item"
+  onMouseEnter={() => {
+    if (screenWidth > 750) setIsCateoryOpen(true);
+  }}
+  onMouseLeave={() => {
+    if (screenWidth > 750) {
+      setTimeout(() => setIsCateoryOpen(false), 200); // تاخیر 200 میلی‌ثانیه
+    }
+  }}
+  style={{ position: "relative" }}
+>
+  <button
+    className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
+    onClick={() => {
+      if (screenWidth <= 750) setIsCateoryOpen(!iscategoryOpen);
+    }}
+    style={{ background: "none", border: "none", cursor: "pointer" }}
+  >
+    <i className="fa-solid fa-list"></i>
+    <span>دسته بندی موضوعی</span>
+  </button>
 
-    <button
-      className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
-      onClick={() => { if (screenWidth <= 750) setIsCateoryOpen(!iscategoryOpen) }}
-      style={{ background: "none", border: "none", cursor: "pointer" }}>
-
-      <i className="fa-solid fa-list"></i>
-      <span>دسته بندی موضوعی</span>
-    </button>
-
-    <ul className={`list-group list-group-flush ${iscategoryOpen ? "show" : ""}`}
-        onMouseEnter={() => { if (screenWidth > 750) setIsCateoryOpen(true) }}
-        onMouseLeave={() => { if (screenWidth > 750) setIsCateoryOpen(false) }}>
-      <li className="list-group-item">
-        <Link className='Linkitem' to="/bookscategory/story">داستان</Link>
-      </li>
-      <li className="list-group-item">
-        <Link className='Linkitem' to="/bookscategory/">علمی</Link>
-      </li>
-      <li className="list-group-item">
-        <Link className='Linkitem' to="/bookscategory/تاریخی">تاریخی</Link>
-      </li>
-    </ul>
+  <ul
+    className={`list-group list-group-flush ${iscategoryOpen ? "show" : ""}`}
+    onMouseEnter={() => {
+      if (screenWidth > 750) setIsCateoryOpen(true);
+    }}
+    onMouseLeave={() => {
+      if (screenWidth > 750) {
+        setTimeout(() => setIsCateoryOpen(false), 200); // تاخیر 200 میلی‌ثانیه
+      }
+    }}
+  >
+    <li className="list-group-item">
+      <Link className="Linkitem" to="/bookscategory/story">
+        داستان
+      </Link>
+    </li>
+    <li className="list-group-item">
+      <Link className="Linkitem" to="/bookscategory/">
+        علمی
+      </Link>
+    </li>
+    <li className="list-group-item">
+      <Link className="Linkitem" to="/bookscategory/تاریخی">
+        تاریخی
+      </Link>
+    </li>
+  </ul>
 </li>
 
    <li className="nav-item">
