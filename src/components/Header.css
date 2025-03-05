@@ -143,20 +143,7 @@ color: rgba(255, 255, 255, 1);
     height: 40px;
     
 }
- 
-.nav-item {
-    margin: 0;
-    padding: 0 12px;
-    text-decoration: none;
-    flex-grow: 0;
-    transition: border-color 0.3s ease-in;
-    border-bottom: 1px solid transparent; 
-  }
-  
-  .nav-item:hover {
-    border-bottom: 1px solid rgba(44, 128, 255, 1); 
-  }
-  
+
 
 .nav-link {
     display: flex;
@@ -198,21 +185,48 @@ span .icon {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.list-group {
+.nav-item {
+    margin: 0;
+    padding: 0 12px;
+    text-decoration: none;
+    flex-grow: 0;
+    transition: border-color 0.3s ease-in;
+    border-bottom: 1px solid transparent;
+    position: relative;
+  }
+  
+  .nav-item:hover {
+    border-bottom: 1px solid rgba(44, 128, 255, 1);
+  }
+  
+  .nav-item:hover .list-group {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  @media  (max-width: 768px) {
+    .nav-item:active .list-group{
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+  }
+  
+  .list-group {
     position: absolute;
     top: 100%;
     z-index: 1050;
-    transition: opacity 0.3s ease, transform 0.5s ease, visibility 0.5s ease;
-    font-family: 'IRANSansXMedium';
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    font-family: 'IRANSansXMedium';
     border-radius: 10%;
-    pointer-events: none; /* غیرفعال کردن ورودی‌ها در حالت پیش‌فرض */
   }
   
-  .list-group.show {
-    opacity: 1;
-    pointer-events: auto; /* فعال کردن ورودی‌ها زمانی که لیست نمایش داده می‌شود */
-  }
   
   .list-group-item {
     border: none;
@@ -222,9 +236,9 @@ span .icon {
     text-decoration: none;
     color: black;
     transition: all 0.2s ease;
-    
   }
   
   .Linkitem:hover {
     color: rgba(44, 128, 255, 1);
   }
+  

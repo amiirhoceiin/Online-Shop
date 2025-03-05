@@ -9,7 +9,6 @@ import { useNumberPurchase } from '../hooks/useNumberPurchase';
 export default function Header() {
   const {mode,changeMode} = useTheme(); 
   const {numberPurchase}=useNumberPurchase();
-  const [iscategoryOpen, setIsCateoryOpen] = useState(false);
   const headerButton='ورود / ثبت نام';
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -66,50 +65,25 @@ export default function Header() {
 
 
       <ul className="navbar-nav navbarUlStyle">
- 
-
         <li className="nav-item ">
           <Link className={`nav-link ${mode}`} to="/">
           <i className="fa-solid fa-house"></i>
           <span>خانه</span>
           </Link>
         </li>
-    
 
-        <li
-  className="nav-item"
-  onMouseEnter={() => {
-    if (screenWidth > 750) setIsCateoryOpen(true);
-  }}
-  onMouseLeave={() => {
-    if (screenWidth > 750) {
-      setTimeout(() => setIsCateoryOpen(false), 200); // تاخیر 200 میلی‌ثانیه
-    }
-  }}
-  style={{ position: "relative" }}
->
-  <button
-    className={`nav-link ${mode} ${iscategoryOpen ? "active" : ""}`}
-    onClick={() => {
-      if (screenWidth <= 750) setIsCateoryOpen(!iscategoryOpen);
-    }}
+
+        <li className="nav-item">
+       <button
+       className={`nav-link ${mode}`}
+
     style={{ background: "none", border: "none", cursor: "pointer" }}
   >
     <i className="fa-solid fa-list"></i>
     <span>دسته بندی موضوعی</span>
   </button>
 
-  <ul
-    className={`list-group list-group-flush ${iscategoryOpen ? "show" : ""}`}
-    onMouseEnter={() => {
-      if (screenWidth > 750) setIsCateoryOpen(true);
-    }}
-    onMouseLeave={() => {
-      if (screenWidth > 750) {
-        setTimeout(() => setIsCateoryOpen(false), 200); // تاخیر 200 میلی‌ثانیه
-      }
-    }}
-  >
+  <ul className="list-group list-group-flush">
     <li className="list-group-item">
       <Link className="Linkitem" to="/bookscategory/story">
         داستان
@@ -127,6 +101,7 @@ export default function Header() {
     </li>
   </ul>
 </li>
+
 
    <li className="nav-item">
     <Link className={`nav-link ${mode}`} to="/featured-books">
