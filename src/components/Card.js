@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Card.module.css'; // Import CSS Module
 import { useNumberPurchase } from '../hooks/useNumberPurchase';
 
@@ -14,7 +14,7 @@ export default function Card() {
     const { mode } = useTheme();
      const {changeNumberPurchase}=useNumberPurchase();
     
-
+ 
     const { data: bookSuggestion, isLoading, isError, error } = useQuery({
         queryKey: ['bookSuggestion'],
         queryFn: useFetch,
@@ -44,7 +44,7 @@ export default function Card() {
                             : null;
 
                     return (
-                        <div key={limitedBook.Info.id} className={styles.customCol}>
+                        <div key={limitedBook.slug} className={styles.customCol}>
                             <div className={`${mode === 'dark'?styles.cardTopStyleDark: styles.cardTopStyle}`}>
                                 <div className={styles.divTopStyle}>
                                     {discountPercentage ? (
