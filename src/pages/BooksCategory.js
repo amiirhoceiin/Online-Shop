@@ -52,7 +52,7 @@ export default function Books() {
               : null;
   
           return (
-            <div key={limitedBook.Info.id} className={`${styles.customCol}`}>
+            <div key={limitedBook.slug} className={`${styles.customCol}`}>
               <div className={``}>
               <div className={`${mode === 'dark' ? styles.cardTopStyleDark : styles.cardTopStyle}`}>
                 <div className={styles.divTopStyle}>

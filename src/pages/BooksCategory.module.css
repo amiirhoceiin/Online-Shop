@@ -18,7 +18,7 @@
    width: 100%;
    max-width: 1440px;
    margin: 0 auto;
-   height: 100vh;
+   min-height: 100vh
    
  }
  .divStyleDark {
@@ -29,7 +29,29 @@
    max-width: 1440px;
    margin: 0 auto;
    background-color: rgba(32, 32, 32, 1);
-   height: 100vh;
+   min-height: 100vh
+ }
+
+ @media (max-width: 768px) {
+   .divStyle {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       width: 100%;
+       max-width: 1440px;
+       margin: 0 auto;
+       height: 100%;
+   }
+   .divStyleDark {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       width: 100%;
+       max-width: 1440px;
+       margin: 0 auto;
+       background-color: rgba(32, 32, 32, 1);
+       height: 100%;
+   }
  }
  
  .containerstyle {
@@ -115,6 +137,10 @@
     background-color: rgba(255, 255, 255, 1);
     color: rgba(32, 32, 32, 1);
  }
+ .buttonBuyStyle:hover {
+   background-color: rgba(32, 32, 32, 1) !important;
+   color: rgba(255, 255, 255, 1);
+}
  .buttonBuyStyleDark {
     display: flex;
     justify-content: center;
@@ -125,13 +151,30 @@
     background-color: rgba(32, 32, 32, 1);
     color: rgba(255, 255, 255, 1);
  }
+ .buttonBuyStyleDark:hover {
+   color: rgba(32, 32, 32, 1);
+   background-color: rgba(255, 255, 255, 1);
+}
  
  .cardImgTop {
     width: 168.51px;
     height: 264px;
     border-radius: 0;
     filter: brightness(80%);
+    transition: transform 0.2s ease;
  }
+ .customCol:hover .cardImgTop{
+   transform: translateY(-12px);
+}
+.customCol:hover .cardTopStyle{
+   background-color: white;
+}
+.customCol:hover .cardTopStyleDark{
+   background-color: rgba(32, 32, 32, 1);
+}
+.customCol:hover .buttonBuyStyle{
+   background-color: rgba(237, 237, 237, 1);
+}
  
  .cardBody {
     width: 100%;
@@ -288,7 +331,7 @@
    font-family: 'IRANSansXRegular';
    text-overflow: ellipsis;
    text-align: right;
-   overflow: hidden;
+   overflow: hidden; 
    direction: rtl; 
  }
 
