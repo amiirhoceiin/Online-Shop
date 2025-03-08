@@ -5,8 +5,9 @@ import Home from './pages/Home';
 import BooksCategory from './pages/BooksCategory'
 import Loginpage from './pages/Loginpage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import BookInformation from './pages/‌BookInformation';
+import BookMostsel from './pages/BookMostsel';
 
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ function App() {
         <Route path='/*' element={<div className='d-flex justify-content-center'><h1>404 Not Found</h1></div>}/>
         <Route path='/bookscategory/:category' element={<BooksCategory/>}/> 
         <Route path='/bookinformation/:bookurl' element={<BookInformation/>}/>
+        <Route path='/booksmostsels' element={<BookMostsel/>}/>
       </Routes>
     </div>
   );
