@@ -10,7 +10,7 @@
     font-family: 'IRANSansXRegular';
     src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
  }
-
+ 
  .containerfluid{
     display: flex;
     flex-direction: column;
@@ -20,7 +20,6 @@
     margin: 0 auto;
     height: 100vh;
     padding: 0;
-   
  }
  .containerfluidDark{
     display: flex;
@@ -34,28 +33,47 @@
     background-color: rgba(32, 32, 32, 1);
  }
  .cardStyle {
+   display: flex;
+   flex-direction: row;
     margin: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
     direction: rtl;
     border: none;
     margin: 50px 20px;
-    background-color: white;
+    background-color: white; 
  }
  .cardStyleDark {
-   margin: 20px;
-   text-align: center;
    display: flex;
    flex-direction: row;
+   margin: 20px;
    direction: rtl;
    border: none;
    margin: 50px 20px;
    background-color: rgba(32, 32, 32, 1);
    color: white;
  }
+ @media (max-width : 430px) {
+   .cardStyle{
+      display: flex;
+      flex-direction: column;
+   }
+   .cardStyleDark{
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(32, 32, 32, 1);
+      color: white;
+   }
+ }
 
  .sec1CardStyle{
    display: flex;
+   flex-direction: row;
+ 
  }
+ .sec2CardStyle{
+   direction: ltr;
+   display: flex;
+   width: 100%;
+ }
+
+
 
