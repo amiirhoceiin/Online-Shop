@@ -34,7 +34,7 @@ export default function BookInformation() {
   }
 
   return (
-    <div className={`container ${mode === 'dark' ? styles.containerfluidDark : styles.containerfluid}`}>
+    <div className={` ${mode === 'dark' ? styles.containerfluidDark : styles.containerfluid}`}>
       <div className={`${mode === 'dark' ? styles.cardStyleDark : styles.cardStyle} card`}>
         <div className={styles.sec1CardStyle}>
           <img 

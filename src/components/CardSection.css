@@ -8,7 +8,6 @@
     flex-direction: column;
     padding: 60px 40px;
     width: 100%;
-    max-width: 1440px;
     gap: 20px;
     margin: 0 auto;
 }

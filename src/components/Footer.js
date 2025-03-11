@@ -5,9 +5,10 @@ import './Footer.css'
 export default function Footer() {
   const {mode} = useTheme();
   return ( 
-    <div className={` footerStyle ${mode}`}>
+  <div className={`footer ${mode}`}>
+        <div className={` footerStyle ${mode}`}>
        <div className='footerbrand'>BOOOK</div>
-       <div className='footerbodystyle'>
+       <div className='footerbodystyle'> 
         <div className='footertablestyle'>
           <table className='table table-borderless'>
             <thead>
@@ -124,5 +125,6 @@ export default function Footer() {
        </div>
      
     </div>
+  </div>
   )
 }

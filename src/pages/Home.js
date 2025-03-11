@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 
 export default function Home() {
   return (
-    <div  style={{width:'100%',maxWidth:'1440px',margin:'0 auto',minHeight:'100vh',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+    <div  style={{width:'100%',margin:'0 auto',minHeight:'100vh',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
         <Carousel/>
         <CardSection/>
         <CardSection/>

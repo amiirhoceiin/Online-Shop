@@ -6,7 +6,14 @@
     font-family: 'IRANSansXRegular';
     src: url('../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
 }
-
+.footer{
+ width: 100%;
+ height: 537px;
+ background-color: rgba(32, 32, 32, 1);
+}
+.footer.dark{
+    background-color: rgba(22, 22, 22, 1)
+}
 .footerStyle{
     width: 100%;
     max-width: 1440px;
@@ -17,6 +24,8 @@
     align-items: end;
     gap: 40px;
     padding: 60px 40px;
+    margin: 0 auto;
+    
    
 }
 .footerStyle.dark {
