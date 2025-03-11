@@ -1,20 +1,20 @@
-.Slidersec{
+.Slidersec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   background-color: white;
+
 }
-.Slidersec.dark{
-   background-color: rgba(32, 32, 32, 1);
+.Slidersec.dark {
+  background-color: rgba(32, 32, 32, 1);
 }
-.Slider{
-    width: 100%;
-    max-width: 1440px;
-    height: 100%;
-    max-height: 300px;
-    margin: 0 auto;
-    display: flex;
-    gap: 20px; 
+.Slider {
+  display: flex;
+  gap: 20px;
   
-} 
+}
+
 .carousel-indicators [data-bs-target] {
     width: 6px;
     height: 6px;
@@ -61,7 +61,9 @@
 
   .carousel-inner {
     width: 100%;
-    max-width: 1440px;
+    max-width: 2000px;
+    height: 100%;
+    
   }
   .carousel-item:hover{
     filter:brightness(80%);
@@ -70,7 +72,7 @@
     display: flex;
     gap: 12px;
     position: absolute;
-    left: 2.78%; 
+    left: 5%; 
     top: 81.33%;
 }
 
