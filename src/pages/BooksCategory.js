@@ -19,7 +19,7 @@ export default function Books() {
   const { changeNumberPurchase } = useNumberPurchase();
   const [page, setPage] = useState(1);
 
-  const { data: Books, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ['bookCategory', category, page],
     queryFn: () => FetchBook(category, page),
     staleTime: 5 * 60 * 1000,
@@ -38,6 +38,7 @@ export default function Books() {
   if (isError) {
     return <div>{error.message}</div>;
   }
+  const { count, next, previous, results: Books } = data;
 
   return (
     <div className={`${mode === 'dark' ? styles.divStyleDark : styles.divStyle}`}>
@@ -108,19 +109,18 @@ export default function Books() {
           })}
         </div>
       </div>
-      <div className={`d-flex justify-content-center align-items-center ${mode === 'dark' ? styles.paginationDark : styles.pagination}`}>
+      <div className={`d-flex justify-content-center align-items-center ${mode ==='dark' ? styles.paginationDark : styles.pagination}`}>
         <button
-          className={`btn ${mode === 'dark' ? styles.btnprevStyleDark : styles.btnprevStyle}`}
+          className="btn"
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-          disabled={page === 1}
+          disabled={!previous}
         >
           قبلی
         </button>
-        <span style={{ margin: '10px' }}>{page} صفحه</span>
         <button
-          className={`btn ${mode === 'dark' ? styles.btnnextStyleDark : styles.btnnextStyle}`}
+          className="btn"
           onClick={() => setPage((prev) => prev + 1)}
-          disabled={!Books || Books.length === 0}
+          disabled={!next}
         >
           بعدی
         </button>
