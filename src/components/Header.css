@@ -16,10 +16,14 @@
 .headerstyle{
     width:100%;
     margin:0 auto;
-    
+    position: sticky;
+    background-color:white ;
+    top: 0;
+    z-index: 10;
 }
 .headerstyle.dark {
     background-color: rgba(32, 32, 32, 1);
+    
 }
 .navbarStyle {
 width: 100%;
@@ -30,6 +34,7 @@ padding-bottom: 16px;
 flex-wrap: nowrap;
 margin: 0 auto;
 overflow: hidden;
+
 }
 
 .formStyle{ 
@@ -128,6 +133,12 @@ color: rgba(255, 255, 255, 1);
  padding: 0;
  margin: 0 auto;
  display: flex;
+ transition: opacity 0.5s ease, height 0.5s ease;
+}
+.navbar2Style.scrolled {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 
