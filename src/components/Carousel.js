@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './Carousel.css'
 import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
+import { Carousel as BootstrapCarousel } from 'bootstrap';
 import { useQuery } from '@tanstack/react-query';
 
 const fetchSlider = ()=>{
@@ -10,6 +11,15 @@ const fetchSlider = ()=>{
 
 export default function Carousel() {
   const {mode} = useTheme();
+  useEffect(() => {
+    const carouselElement = document.getElementById('carouselExampleIndicators');
+    if (carouselElement) {
+      const carousel = new BootstrapCarousel(carouselElement, {
+        interval: 3000,
+        ride: 'carousel',
+      });
+    }
+  }, []);
   const {data:sliderBooks,isLoading,isError,error} = useQuery({
     queryKey : ['sliderBooks'],
     queryFn : fetchSlider,
@@ -44,7 +54,7 @@ export default function Carousel() {
   
   <div className="carousel-inner ">
   {limitedData?.map((limited,index)=>(
-      <div key={limited.id} 
+      <div key={limited.order} 
       className={`carousel-item ${index === 0 ? 'active' : ''}`}>
         <img src={`http://127.0.0.1:8000/${limited.image.image_url}`} title={limited.title} className="d-block w-100 " alt="..."/>
       </div>
