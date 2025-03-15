@@ -8,6 +8,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import BookInformation from './pages/‌BookInformation';
 import BookMostsel from './pages/BookMostsel';
+import { useTheme } from './hooks/useTheme';
+import { useEffect } from 'react';
+
 
 
 const queryClient = new QueryClient();
@@ -32,6 +35,15 @@ function App() {
 }
 
 export default function AppWrapper() {
+  const { mode } = useTheme();
+
+  useEffect(() => {
+    document.body.classList.add(mode);
+    return () => {
+      document.body.classList.remove('light', 'dark');
+    };
+  }, [mode]);
+
   return (
     <BrowserRouter>
      <QueryClientProvider client={queryClient}>
