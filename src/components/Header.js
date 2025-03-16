@@ -6,6 +6,15 @@ import { debounce } from 'lodash';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useNumberPurchase } from '../hooks/useNumberPurchase';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+
+
+const FetchBook = () => {
+  return axios
+    .get('http://127.0.0.1:8000/product/categories/')
+    .then((res) => res.data);
+};
 
 export default function Header() {
   const { mode, changeMode } = useTheme();
@@ -15,6 +24,7 @@ export default function Header() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
@@ -25,22 +35,40 @@ export default function Header() {
   const handleScroll = debounce(() => {
     const scrollY = window.scrollY;
     if (scrollY > 60) {
-      setIsScrolled(true); // حذف المان
+      setIsScrolled(true); 
     } else if (scrollY <= 10) {
-      setIsScrolled(false); // برگرداندن المان
+      setIsScrolled(false); 
     }
   }, 50); 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      handleScroll.cancel(); // لغو تابع debounce هنگام unmount
+      handleScroll.cancel();
     };
   }, [handleScroll]);
 
   const handleClick = () => {
     navigate("/Login");
   };
+
+
+  const { data: categories, isLoading, isError, error } = useQuery({
+    queryKey: ['categories'],
+    queryFn: FetchBook,
+    staleTime: 5 * 60 * 1000,
+    cacheTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: true,
+    refetchOnMount: false,
+   });
+
+if (isLoading) {
+    return <div>در حال بارگذاری...</div>;
+}
+
+if (isError) {
+    return <div>{error.message}</div>;
+}
 
   return (
     <div className={`headerstyle ${mode}`}>
@@ -103,6 +131,8 @@ export default function Header() {
                   <span>خانه</span>
                 </Link>
               </li>
+
+
               <li className="nav-item">
                 <button
                   className={`nav-link ${mode}`}
@@ -112,23 +142,18 @@ export default function Header() {
                   <span>دسته بندی موضوعی</span>
                 </button>
                 <ul className="list-group list-group-flush">
+                  {categories?.map((category)=>(
                   <li className="list-group-item">
-                    <Link className="Linkitem" to="/bookscategory/story">
-                      داستان
+                  <Link className="Linkitem" to={`/bookscategory/${category.url_title}`}>
+                      {category.name}
                     </Link>
                   </li>
-                  <li className="list-group-item">
-                    <Link className="Linkitem" to="/bookscategory/">
-                      علمی
-                    </Link>
-                  </li>
-                  <li className="list-group-item">
-                    <Link className="Linkitem" to="/bookscategory/تاریخی">
-                      تاریخی
-                    </Link>
-                  </li>
+                  ))}
                 </ul>
               </li>
+
+
+
               <li className="nav-item">
                 <Link className={`nav-link ${mode}`} to="/featured-books">
                   <i className="fa-regular fa-bookmark"></i>

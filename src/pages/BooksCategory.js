@@ -116,7 +116,8 @@ export default function Books() {
           disabled={!previous}
         >
           قبلی
-        </button>
+        </button> 
+         <span className='p-2'>{page}</span>
         <button
           className="btn"
           onClick={() => setPage((prev) => prev + 1)}
