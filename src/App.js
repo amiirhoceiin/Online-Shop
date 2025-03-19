@@ -18,6 +18,10 @@ const queryClient = new QueryClient();
 function App() {
   const location = useLocation(); 
   const hideHeaderPaths = ['/Login','/*']; 
+  useEffect(() => {
+  
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <div className="App">
