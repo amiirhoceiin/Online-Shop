@@ -1,9 +1,9 @@
 import React from 'react'
-import { useTheme } from '../hooks/useTheme';
 import './Footer.css'
+import { useSelector } from 'react-redux';
 
 export default function Footer() {
-  const {mode} = useTheme();
+  const mode = useSelector(state=>state.theme.mode)
   return ( 
   <div className={`footer ${mode}`}>
         <div className={` footerStyle ${mode}`}>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import searchIcon from '../img/icon/icons8-search-24.svg';
-import { useTheme } from '../hooks/useTheme';
 import { debounce } from 'lodash';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useNumberPurchase } from '../hooks/useNumberPurchase';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeMode } from '../redux/themeSlice';
 
 
 const FetchBook = () => {
@@ -17,8 +17,9 @@ const FetchBook = () => {
 };
 
 export default function Header() {
-  const { mode, changeMode } = useTheme();
-  const { numberPurchase } = useNumberPurchase();
+  const  mode = useSelector(state=>state.theme.mode);
+  const dispatch = useDispatch();
+  const  numberPurchase  = useSelector(state=>state.numberPurchase.value);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerButton = 'ورود / ثبت نام';
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -52,6 +53,11 @@ export default function Header() {
     navigate("/Login");
   };
 
+  const toggleTheme =()=> {
+   const newMode =  mode === 'light' ? 'dark' : 'light';
+   dispatch(changeMode(newMode))
+  }
+
 
   const { data: categories, isLoading, isError, error } = useQuery({
     queryKey: ['categories'],
@@ -74,7 +80,7 @@ if (isError) {
     <div className={`headerstyle ${mode}`}>
       <nav className={`navbar navbarStyle d-flex ${mode}`}>
         <form className='container-fluid formStyle' onSubmit={(e) => e.preventDefault()}>
-          <button className={`circuleButton1 btn ${mode}`} onClick={() => changeMode(mode === 'dark' ? 'light' : 'dark')}>
+          <button className={`circuleButton1 btn ${mode}`} onClick={toggleTheme}>
             <i className="fa-regular fa-moon"></i>
           </button>
 

@@ -1,16 +1,16 @@
 import React,{useEffect} from 'react'
 import './Carousel.css'
-import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
 import { Carousel as BootstrapCarousel } from 'bootstrap';
 import { useQuery } from '@tanstack/react-query';
+import { useSelector } from 'react-redux';
 
 const fetchSlider = ()=>{
  return axios.get('http://127.0.0.1:8000/product/slider/').then(res=>res.data);
 }
 
 export default function Carousel() {
-  const {mode} = useTheme();
+  const mode = useSelector(state=>state.theme.mode)
   useEffect(() => {
     const carouselElement = document.getElementById('carouselExampleIndicators');
     if (carouselElement) {

@@ -5,17 +5,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from './context/themecontext';
-import { NumberPurchaseProvider } from './context/numberPurchasescontext';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode> 
-    <ThemeProvider>
-        <NumberPurchaseProvider>
+       <Provider store={store}>
          <App />
-        </NumberPurchaseProvider>
-    </ThemeProvider> 
+       </Provider>  
   </React.StrictMode>
 );
 

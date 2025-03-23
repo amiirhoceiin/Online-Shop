@@ -3,9 +3,9 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import styles from './BooksCategory.module.css';
 import { Link, useParams } from 'react-router-dom';
-import { useTheme } from '../hooks/useTheme';
 import Footer from '../components/Footer';
-import { useNumberPurchase } from '../hooks/useNumberPurchase';
+import { useDispatch, useSelector } from 'react-redux';
+import { increament } from '../redux/numberPurchaseSlice';
 
 const FetchBook = (category, page) => {
   return axios
@@ -15,8 +15,8 @@ const FetchBook = (category, page) => {
 
 export default function Books() {
   const { category } = useParams();
-  const { mode } = useTheme();
-  const { changeNumberPurchase } = useNumberPurchase();
+  const mode = useSelector(state=>state.theme.mode);
+  const distpatch = useDispatch();
   const [page, setPage] = useState(1);
 
   const { data, isLoading, isError, error } = useQuery({
@@ -38,17 +38,17 @@ export default function Books() {
   if (isError) {
     return <div>{error.message}</div>;
   }
-  const { count, next, previous, results: Books } = data;
+  const {  next, previous, results: Books } = data;
 
   return (
     <div className={`${mode === 'dark' ? styles.divStyleDark : styles.divStyle}`}>
       <div className={`${mode === 'dark' ? styles.containerstyleDark : styles.containerstyle} container-fluid`}>
         <div className={`${styles.rowstyle} row`}>
           {Books?.map((limitedBook) => {
-            const discountPercentage =
-              limitedBook.price && limitedBook.discounted_price
-                ? (((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100)
-                : null;
+           const discountPercentage =
+           limitedBook.price && limitedBook.discounted_price
+               ? parseFloat((((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100).toFixed(0))
+               : null;
 
             return (
               <div key={limitedBook.slug} className={`${styles.customCol}`}>
@@ -60,7 +60,7 @@ export default function Books() {
                       </button>
                     ) : null}
                     <button
-                      onClick={() => changeNumberPurchase()}
+                      onClick={() => distpatch(increament())}
                       className={`${mode === 'dark' ? styles.buttonBuyStyleDark : styles.buttonBuyStyle} btn`}
                     >
                       <i className="fa-solid fa-cart-shopping"></i>

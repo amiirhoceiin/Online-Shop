@@ -3,16 +3,16 @@ import styles from './BookInformation.module.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { useTheme } from '../hooks/useTheme';
 import Footer from '../components/Footer';
 import Rate from '../components/Rate';
+import { useSelector } from 'react-redux';
 
 const fetchBook = (bookurl) => {
   return axios.get(`http://127.0.0.1:8000/product/${bookurl}/`).then((res) => res.data);
 };
 
 export default function BookInformation() {
-  const { mode } = useTheme();
+  const mode = useSelector(state=>state.theme.mode)
   const { bookurl } = useParams();
 
   const { data: booksInformation, isLoading, isError, error } = useQuery({

@@ -1,18 +1,19 @@
 import React from 'react';
-import { useTheme } from '../hooks/useTheme';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styles from './Card.module.css'; // Import CSS Module
-import { useNumberPurchase } from '../hooks/useNumberPurchase';
+import { useDispatch, useSelector } from 'react-redux';
+import { increament } from '../redux/numberPurchaseSlice';
 
 const useFetch = () => {
     return axios.get('http://127.0.0.1:8000/product/most-sells-products/').then((res) => res.data);
 };
 
 export default function Card() {
-    const { mode } = useTheme();
-     const {changeNumberPurchase}=useNumberPurchase();
+    const  mode = useSelector(state=>state.theme.mode)
+    
+    const dispatch = useDispatch();
     
  
     const { data: bookSuggestion, isLoading, isError, error } = useQuery({
@@ -38,10 +39,10 @@ export default function Card() {
         <div className={`${styles.containerstyle} container-fluid`}>
             <div className={`${styles.rowstyle} row`}>
                 {limitedBooks?.map((limitedBook) => {
-                    const discountPercentage =
-                        limitedBook.price && limitedBook.discounted_price
-                            ? (((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100)
-                            : null;
+ const discountPercentage =
+ limitedBook.price && limitedBook.discounted_price
+     ? parseFloat((((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100).toFixed(0))
+     : null;
 
                     return (
                         <div key={limitedBook.slug} className={styles.customCol}>
@@ -52,7 +53,7 @@ export default function Card() {
                                             {`${discountPercentage.toLocaleString('fa-IR')}٪`}
                                         </button>
                                     ) : null}
-                                    <button onClick={()=>changeNumberPurchase()} className={`${mode ==='dark' ? styles.buttonBuyStyleDark: styles.buttonBuyStyle} btn `}>
+                                    <button onClick={()=>dispatch(increament())} className={`${mode ==='dark' ? styles.buttonBuyStyleDark: styles.buttonBuyStyle} btn `}>
                                         <i className="fa-solid fa-cart-shopping"></i>
                                     </button>
                                 </div>

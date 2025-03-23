@@ -1,19 +1,19 @@
 import React from 'react'
-import { useTheme } from '../hooks/useTheme';
-import { useNumberPurchase } from '../hooks/useNumberPurchase';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import styles from './BookMostsel.module.css'
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { increament } from '../redux/numberPurchaseSlice';
 
 
 const useFetch = () => {
   return axios.get('http://127.0.0.1:8000/product/most-sells-products/').then((res) => res.data);
 };
 export default function BookMostsel() {
-  const { mode } = useTheme();
-  const {changeNumberPurchase}=useNumberPurchase();
+  const mode = useSelector(state=>state.theme.mode)
+  const distpatch = useDispatch();
  
 
  const { data: BookMostsel, isLoading, isError, error } = useQuery({
@@ -42,9 +42,9 @@ export default function BookMostsel() {
         </div>
      
         {BookMostsel?.map((limitedBook) => {
-            const discountPercentage =
-                limitedBook.price && limitedBook.discounted_price
-                    ? (((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100)
+                const discountPercentage =
+                     limitedBook.price && limitedBook.discounted_price
+                     ? parseFloat((((limitedBook.price - limitedBook.discounted_price) / limitedBook.price) * 100).toFixed(0))
                     : null;
 
             return (
@@ -56,7 +56,7 @@ export default function BookMostsel() {
                                     {`${discountPercentage.toLocaleString('fa-IR')}٪`}
                                 </button>
                             ) : null}
-                            <button onClick={()=>changeNumberPurchase()} className={`${mode ==='dark' ? styles.buttonBuyStyleDark: styles.buttonBuyStyle} btn `}>
+                            <button onClick={()=>distpatch(increament())} className={`${mode ==='dark' ? styles.buttonBuyStyleDark: styles.buttonBuyStyle} btn `}>
                                 <i className="fa-solid fa-cart-shopping"></i>
                             </button>
                         </div>

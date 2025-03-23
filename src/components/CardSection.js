@@ -1,13 +1,13 @@
 import React from 'react'
-import { useTheme } from '../hooks/useTheme';
 import './CardSection.css'
 import { Link} from 'react-router-dom';
 import Card from './Card'
+import { useSelector } from 'react-redux';
 
 
 
 export default function CardSection() {
-  const {mode} = useTheme();
+  const mode = useSelector(state=>state.theme.mode)
   return (
     <div className={`cardsection container-fluid ${mode}`}>
         <div className={`headercardsection ${mode}`}>
