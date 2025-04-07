@@ -9,6 +9,7 @@
   import BookInformation from './pages/‌BookInformation';
   import BookMostsel from './pages/BookMostsel';
   import { useEffect } from 'react';
+import Shoppingpage from './pages/Shoppingpage/Shoppingpage';
 
 
 
@@ -32,6 +33,7 @@
           <Route path='/bookscategory/:category' element={<BooksCategory/>}/> 
           <Route path='/bookinformation/:bookurl' element={<BookInformation/>}/>
           <Route path='/booksmostsels' element={<BookMostsel/>}/>
+          <Route path='/shoppingcart' element={<Shoppingpage/>}/>
         </Routes>
       </div>
     );

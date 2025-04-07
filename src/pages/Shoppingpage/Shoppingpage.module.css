@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'IRANSansXMedium';
+    src: url('../../fonts/iransansx/IRANSansXMedium.ttf') format('truetype');
+ }
+ @font-face {
+    font-family: 'iranyekan';
+    src: url('../../fonts/iranYekan/iranyekanwebmediumfanum.woff') format('truetype');
+ }
+ @font-face {
+    font-family: 'IRANSansXRegular';
+    src: url('../../fonts/iransansx/IRANSansXRegular.ttf') format('truetype');
+ }
+
+ .containerfluid{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh
+ }
+ .containerfluidDark{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: rgba(32, 32, 32, 1);
+ }
+ .container {
+    direction: rtl;
+ }
+
+
+
+

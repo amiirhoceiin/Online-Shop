@@ -84,13 +84,13 @@ if (isError) {
             <i className="fa-regular fa-moon"></i>
           </button>
 
-          <button className={`circuleButton2 btn ${mode}`}>
+          <Link className={`circuleButton2 btn ${mode}`} to={'/shoppingcart'}>
             <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             <span className="position-absolute badge top-0 translate-middle p-2 bg-danger rounded-circle">
               {numberPurchase}
               <span className="visually-hidden"></span>
             </span>
-          </button>
+          </Link>
 
           {!isAuthenticated && (
             <button className={`headerButtonStyle ${mode}`} onClick={handleClick}>
