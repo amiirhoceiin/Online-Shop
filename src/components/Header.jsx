@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeMode } from '../redux/themeSlice';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 
 const FetchBook = () => {
@@ -116,78 +117,68 @@ if (isError) {
       </nav>
       <hr className={`responsive-hr ${mode}`} />
 
-      <nav className={`navbar navbar-expand-lg navbar2Style ${mode} ${isScrolled ? "scrolled" : ""}`}>
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav" style={{ direction: 'rtl' }}>
-            <ul className="navbar-nav navbarUlStyle">
-              <li className="nav-item">
-                <Link className={`nav-link ${mode}`} to="/">
-                  <i className="fa-solid fa-house"></i>
-                  <span>خانه</span>
-                </Link>
-              </li>
+      <Navbar expand="lg" className={`navbar navbar2Style ${mode} ${isScrolled ? "scrolled" : ""}`}>
+      <Container fluid>
+        <Navbar.Toggle aria-controls="navbarNav" />
+        <Navbar.Collapse id="navbarNav" style={{ direction: 'rtl' }}>
+          <Nav className="navbar-nav navbarUlStyle">
+            <Nav.Item className="nav-item">
+              <Link className={`nav-link ${mode}`} to="/">
+                <i className="fa-solid fa-house"></i>
+                <span>خانه</span>
+              </Link>
+            </Nav.Item>
 
-
-              <li className="nav-item">
-                <button
-                  className={`nav-link ${mode}`}
-                  style={{ background: "none", border: "none", cursor: "pointer" }}
-                >
-                  <i className="fa-solid fa-list"></i>
-                  <span>دسته بندی موضوعی</span>
-                </button>
-                <ul className="list-group list-group-flush">
-                  {categories?.map((category)=>(
-                  <li className="list-group-item">
-                  <Link className="Linkitem" to={`/bookscategory/${category.url_title}`}>
+            <Nav.Item className="nav-item">
+              <button
+                className={`nav-link ${mode}`}
+                style={{ background: "none", border: "none", cursor: "pointer" }}
+              >
+                <i className="fa-solid fa-list"></i>
+                <span>دسته بندی موضوعی</span>
+              </button>
+              <ul className="list-group list-group-flush">
+                {categories?.map((category) => (
+                  <li key={category.url_title} className="list-group-item">
+                    <Link className="Linkitem" to={`/bookscategory/${category.url_title}`}>
                       {category.name}
                     </Link>
                   </li>
-                  ))}
-                </ul>
-              </li>
+                ))}
+              </ul>
+            </Nav.Item>
 
+            <Nav.Item className="nav-item">
+              <Link className={`nav-link ${mode}`} to="/featured-books">
+                <i className="fa-regular fa-bookmark"></i>
+                <span>کتاب های برگزیده</span>
+              </Link>
+            </Nav.Item>
 
+            <Nav.Item className="nav-item">
+              <Link className={`nav-link ${mode}`} to="/literary-awards">
+                <i className="fa-solid fa-medal"></i>
+                <span>جوایز ادبی</span>
+              </Link>
+            </Nav.Item>
 
-              <li className="nav-item">
-                <Link className={`nav-link ${mode}`} to="/featured-books">
-                  <i className="fa-regular fa-bookmark"></i>
-                  <span>کتاب های برگزیده</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${mode}`} to="/literary-awards">
-                  <i className="fa-solid fa-medal"></i>
-                  <span>جوایز ادبی</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${mode}`} to="/world-literature">
-                  <i className="fa-solid fa-earth-americas"></i>
-                  <span>ادبیات ملل</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${mode}`} to="/suggested-package">
-                  <i className="fa-solid fa-box"></i>
-                  <span>بسته پیشنهادی</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            <Nav.Item className="nav-item">
+              <Link className={`nav-link ${mode}`} to="/world-literature">
+                <i className="fa-solid fa-earth-americas"></i>
+                <span>ادبیات ملل</span>
+              </Link>
+            </Nav.Item>
+
+            <Nav.Item className="nav-item">
+              <Link className={`nav-link ${mode}`} to="/suggested-package">
+                <i className="fa-solid fa-box"></i>
+                <span>بسته پیشنهادی</span>
+              </Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
     </div>
   );
 }

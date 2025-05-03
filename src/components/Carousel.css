@@ -4,6 +4,7 @@
   align-items: center;
   width: 100%;
   background-color: white;
+  
 }
 
 .Slidersec.dark {
@@ -69,6 +70,11 @@
   height: 100%;
   max-height: 350px;
 }
+@media (max-width : 700px) {
+  .imgslider{
+    height: 120px;
+  }
+}
 
 .carousel-item:hover {
   filter: brightness(80%);
@@ -80,10 +86,20 @@
   position: absolute;
   left: 3%;
   top: 81.33%;
+  
 }
 
 @media (min-width: 1600px) {
   .custom-controls {
     left: 10%;
+  }
+}
+@media (max-width : 700px){
+  .custom-controls{
+
+    gap: 4px;
+
+    top: 60.33%;
+   
   }
 }

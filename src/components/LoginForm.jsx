@@ -53,7 +53,7 @@ export default function LoginForm(props) {
           }
         }).catch(error=>{
           if(error.response){
-            setApiErrorMessage('خطایی در ورود پیش آمده');
+            setApiErrorMessage(error.message);
           }else{
             setApiErrorMessage('خطای شبکه، لطفاً دوباره تلاش کنید');
           }

@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React from 'react'
 import styles from './Shoppingpage.module.css'
 import Footer from '../../components/Footer'
 import { useSelector } from 'react-redux'

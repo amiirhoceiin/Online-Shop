@@ -166,6 +166,9 @@ color: rgba(255, 255, 255, 1);
 
 
 @media (max-width: 768px) {
+    .navbar2Style {
+     
+    }
     .navbarUlStyle {
         flex-direction: column;
         height: auto;
@@ -251,4 +254,5 @@ span .icon {
   .Linkitem:hover {
     color: rgba(44, 128, 255, 1);
   }
+  
   

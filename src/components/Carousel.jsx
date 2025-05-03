@@ -56,7 +56,7 @@ export default function Carousel() {
   {limitedData?.map((limited,index)=>(
       <div key={limited.order} 
       className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-        <img src={`http://127.0.0.1:8000/${limited.image.image_url}`} title={limited.title} className="d-block w-100 " alt="..."/>
+        <img src={`http://127.0.0.1:8000/${limited.image.image_url}`} title={limited.title} className="d-block w-100 imgslider" alt="..."/>
       </div>
      ))}
   </div>
